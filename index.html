@@ -687,7 +687,7 @@ function checkPassword(){
   if(v===DEMO_PW){
     document.getElementById('demoGate').style.display='none';
     document.getElementById('demoPortal').style.display='block';
-    try{sessionStorage.setItem('iho_demo','1');}catch(e){}
+    
   } else {
     document.getElementById('demoError').style.display='block';
     document.getElementById('demoPassword').value='';
@@ -696,7 +696,7 @@ function checkPassword(){
 document.getElementById('demoPassword').addEventListener('keypress',function(e){
   if(e.key==='Enter') checkPassword();
 });
-try{if(sessionStorage.getItem('iho_demo')==='1'){document.getElementById('demoGate').style.display='none';document.getElementById('demoPortal').style.display='block';}}catch(e){}
+
 
 // DEMO PORTAL NAV
 function showSection(id,el){
