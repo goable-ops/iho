@@ -1,926 +1,545 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Iho — Digital Whare for Whanau Trusts</title>
-<meta name="description" content="Iho helps Maori whanau trusts build their digital whare — and find the funding to pay for it. A private, intelligent governance platform for whanau trusts across Aotearoa.">
-<meta name="keywords" content="whanau trust, Maori governance, digital whare, trust management, Maori land trust, grants, Iho">
-<meta property="og:title" content="Iho — Digital Whare for Whanau Trusts">
-<meta property="og:description" content="Your whanau trust deserves to thrive. Iho gives you the tools — and helps you find the funding.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://iho.co.nz">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Iho — Our People. Our Future.</title>
+<meta name="description" content="Iho builds digital wharē for Māori whānau trusts — connecting whānau to their land, their whakapapa, and a self-sustaining future. Built by a trustee, for trustees. Aotearoa New Zealand." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --dark:#2C2417;--brown:#6B4423;--ochre:#9B4420;--ochre-light:#C4693A;
-  --forest:#2D5A27;--forest-light:#4A8A42;--gold:#C9A240;--gold-light:#E2BB6A;
-  --cream:#FAF0E0;--sand:#EDD9B0;--warm-white:#FFFDF7;--grey:#8A7A6A;
-  --border:#D9C8A8;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Nunito',system-ui,sans-serif;
-}
-html{scroll-behavior:smooth;font-size:18px}
-body{font-family:var(--sans);background:var(--warm-white);color:var(--dark);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.7}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; color: #1a1a1a; background: #f7f5f0; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
 
-/* PATTERNS */
-.taniko{height:16px;background:repeating-linear-gradient(45deg,var(--gold) 0,var(--gold) 2px,transparent 2px,transparent 10px),repeating-linear-gradient(-45deg,var(--gold) 0,var(--gold) 2px,transparent 2px,transparent 10px);background-size:14px 14px;opacity:0.45}
-.taniko.f{background:repeating-linear-gradient(45deg,var(--forest) 0,var(--forest) 2px,transparent 2px,transparent 10px),repeating-linear-gradient(-45deg,var(--forest) 0,var(--forest) 2px,transparent 2px,transparent 10px);background-size:14px 14px;opacity:0.25}
-.wave{width:100%;overflow:hidden;line-height:0;margin:-1px 0}
-.wave svg{display:block;width:100%}
+:root {
+  --gold:      #C9922A;
+  --gold-lt:   #E8B84B;
+  --forest:    #1B3D2A;
+  --forest-lt: #2d5a3d;
+  --cream:     #f7f5f0;
+  --cream-dk:  #ede9e0;
+  --text:      #1a1a1a;
+  --muted:     #4a4a45;
+  --soft:      #7a7a72;
+  --border:    rgba(0,0,0,0.1);
+  --radius:    12px;
+  --max:       760px;
+}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(44,36,23,0.97);backdrop-filter:blur(12px)}
-.nav-inner{max-width:1100px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:72px}
-.nav-logo{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--gold);text-decoration:none}
-.nav-links{display:flex;align-items:center;gap:0.15rem;list-style:none}
-.nav-links a{font-size:0.85rem;font-weight:600;color:rgba(255,255,255,0.75);text-decoration:none;padding:0.55rem 0.85rem;border-radius:6px;transition:all 0.2s;white-space:nowrap}
-.nav-links a:hover{color:var(--gold);background:rgba(201,162,64,0.1)}
-.nav-cta{background:var(--gold)!important;color:var(--dark)!important}
-.nav-cta:hover{background:var(--gold-light)!important}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
-.hamburger span{display:block;width:24px;height:2.5px;background:var(--warm-white);border-radius:2px}
-@media(max-width:860px){
-  .nav-links{display:none;position:fixed;top:72px;left:0;right:0;background:rgba(44,36,23,0.99);flex-direction:column;padding:1.5rem;gap:0.4rem;align-items:stretch}
-  .nav-links.open{display:flex}
-  .nav-links a{font-size:1rem;padding:0.85rem 1rem}
-  .hamburger{display:flex}
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(247,245,240,0.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
 }
+.nav-logo img { height: 44px; width: 44px; object-fit: contain; }
+.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+.nav-links a { font-size: 14px; color: var(--muted); font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover { color: var(--forest); }
+.nav-cta { background: var(--forest) !important; color: #fff !important; padding: 9px 20px !important; border-radius: 8px; font-size: 14px !important; transition: background 0.2s !important; }
+.nav-cta:hover { background: var(--forest-lt) !important; }
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; font-size: 24px; color: var(--text); }
 
 /* HERO */
-.hero{min-height:100vh;background:var(--dark);display:flex;align-items:center;position:relative;overflow:hidden;padding-top:72px}
-.hero-texture{position:absolute;inset:0;background-image:repeating-linear-gradient(135deg,rgba(201,162,64,0.025) 0,rgba(201,162,64,0.025) 1px,transparent 1px,transparent 12px),repeating-linear-gradient(45deg,rgba(201,162,64,0.025) 0,rgba(201,162,64,0.025) 1px,transparent 1px,transparent 12px);background-size:17px 17px;pointer-events:none}
+#hero { position: relative; min-height: 95vh; display: flex; align-items: center; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; background-image: url('img-whare.png'); background-size: cover; background-position: center 35%; }
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(27,61,42,0.93) 45%, rgba(27,61,42,0.55) 75%, rgba(27,61,42,0.15) 100%); }
+.hero-inner { position: relative; z-index: 2; max-width: var(--max); margin: 0 auto; padding: 5rem 2rem; width: 100%; }
+.hero-logo { margin-bottom: 2rem; }
+.hero-logo img { height: 90px; width: 90px; object-fit: contain; }
+.hero-label { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; }
+.hero-inner h1 { font-family: 'Lora', serif; font-size: clamp(36px, 6vw, 56px); font-weight: 400; line-height: 1.15; color: #fff; margin-bottom: 1.5rem; max-width: 560px; }
+.hero-inner h1 em { font-style: italic; color: var(--gold-lt); }
+.hero-inner .lead { font-size: 17px; line-height: 1.8; color: rgba(255,255,255,0.82); max-width: 500px; margin-bottom: 1rem; }
+.hero-tagline { font-family: 'Lora', serif; font-size: 15px; font-style: italic; color: var(--gold-lt); margin-bottom: 2.5rem; }
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-gold { background: var(--gold); color: #fff; padding: 15px 32px; border-radius: var(--radius); font-size: 15px; font-weight: 600; border: none; cursor: pointer; font-family: inherit; transition: background 0.2s; display: inline-block; }
+.btn-gold:hover { background: var(--gold-lt); }
+.btn-outline { background: transparent; color: #fff; padding: 15px 32px; border-radius: var(--radius); font-size: 15px; font-weight: 500; border: 1.5px solid rgba(255,255,255,0.4); cursor: pointer; font-family: inherit; transition: border-color 0.2s, background 0.2s; display: inline-block; }
+.btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
 
-.hero-inner{max-width:1100px;margin:0 auto;padding:5rem 1.5rem;position:relative;z-index:2;width:100%;display:grid;grid-template-columns:1.15fr 0.85fr;gap:4rem;align-items:center}
-.hero-tag{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(201,162,64,0.12);border:1px solid rgba(201,162,64,0.25);color:var(--gold);font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.4rem 1rem;border-radius:20px;margin-bottom:1.5rem}
-.hero-title{font-family:var(--serif);font-size:clamp(3rem,6.5vw,5.2rem);font-weight:700;color:var(--warm-white);line-height:1.05;margin-bottom:1rem}
-.hero-title span{color:var(--gold)}
-.hero-bar{width:64px;height:3px;background:var(--ochre);border-radius:2px;margin-bottom:1.25rem}
-.hero-sub{font-size:1.1rem;color:rgba(255,255,255,0.68);line-height:1.8;margin-bottom:0.85rem;font-weight:400}
-.hero-sub strong{color:var(--gold-light);font-weight:700}
-.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;padding:1rem 2rem;font-family:var(--sans);font-size:1rem;font-weight:700;border-radius:8px;text-decoration:none;border:none;cursor:pointer;transition:all 0.25s;min-height:52px;white-space:nowrap}
-.btn-gold{background:var(--gold);color:var(--dark)}
-.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px)}
-.btn-forest{background:var(--forest);color:var(--warm-white)}
-.btn-forest:hover{background:var(--forest-light);transform:translateY(-2px)}
-.btn-outline{background:transparent;color:var(--warm-white);border:2px solid rgba(255,255,255,0.25)}
-.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
-.hero-trust-card{background:rgba(255,255,255,0.05);border:1px solid rgba(201,162,64,0.2);border-radius:14px;padding:2rem}
-.htc-label{font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;opacity:0.8}
-.htc-item{display:flex;gap:0.9rem;margin-bottom:1rem;align-items:flex-start}
-.htc-item:last-child{margin-bottom:0}
-.htc-num{width:28px;height:28px;border-radius:50%;background:rgba(201,162,64,0.15);border:1px solid rgba(201,162,64,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--serif);font-size:0.85rem;font-weight:700;color:var(--gold);margin-top:2px}
-.htc-text{font-size:0.88rem;color:rgba(255,255,255,0.6);line-height:1.55}
-@media(max-width:820px){.hero-inner{grid-template-columns:1fr}.hero-trust-card{display:none}}
+/* MEANING */
+#meaning { background: var(--forest); padding: 4rem 2rem; text-align: center; }
+#meaning .reo { font-family: 'Lora', serif; font-size: clamp(18px,3vw,26px); font-style: italic; color: var(--gold-lt); margin-bottom: 0.75rem; }
+#meaning .trans { font-size: 15px; color: rgba(255,255,255,0.65); max-width: 520px; margin: 0 auto 2rem; line-height: 1.7; }
+.meaning-pills { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+.pill { border: 1px solid rgba(201,146,42,0.5); color: var(--gold-lt); padding: 7px 18px; border-radius: 100px; font-size: 13px; font-weight: 500; }
 
 /* STATS */
-.stats-bar{background:var(--forest)}
-.stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr)}
-.stat{padding:2.5rem 1.5rem;text-align:center;border-right:1px solid rgba(255,255,255,0.1)}
-.stat:last-child{border-right:none}
-.stat-num{font-family:var(--serif);font-size:2.8rem;font-weight:700;color:var(--gold);line-height:1;margin-bottom:0.35rem}
-.stat-label{font-size:0.82rem;color:rgba(255,255,255,0.7);font-weight:500;line-height:1.4}
-@media(max-width:600px){.stats-inner{grid-template-columns:1fr}.stat{border-right:none;border-bottom:1px solid rgba(255,255,255,0.1)}.stat:last-child{border-bottom:none}}
+#stats { background: var(--cream-dk); border-bottom: 1px solid var(--border); padding: 3rem 2rem; }
+.stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; max-width: var(--max); margin: 0 auto; text-align: center; }
+.stat-num { font-family: 'Lora', serif; font-size: 38px; font-weight: 500; color: var(--forest); line-height: 1; margin-bottom: 0.4rem; }
+.stat-label { font-size: 13px; color: var(--soft); line-height: 1.5; }
 
-/* SECTIONS */
-section{padding:5rem 1.5rem}
-.section-inner{max-width:1100px;margin:0 auto}
-.eyebrow{display:inline-block;font-size:0.75rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:0.35rem 0.9rem;border-radius:20px;margin-bottom:1rem}
-.ey-gold{background:rgba(201,162,64,0.12);color:var(--ochre)}
-.ey-forest{background:rgba(45,90,39,0.1);color:var(--forest)}
-.ey-ochre{background:rgba(155,68,32,0.1);color:var(--ochre)}
-.ey-white{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8)}
-.section-title{font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.75rem);font-weight:600;line-height:1.2;margin-bottom:1rem}
-.section-body{font-size:1.02rem;color:var(--brown);line-height:1.85;max-width:680px;margin-bottom:2.5rem}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.65s ease,transform 0.65s ease}
-.reveal.visible{opacity:1;transform:none}
-
-/* HOW IT WORKS */
-.how-section{background:var(--cream)}
-.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:1rem;position:relative}
-.steps-grid::before{content:'';position:absolute;top:48px;left:calc(16.6% + 24px);right:calc(16.6% + 24px);height:2px;background:linear-gradient(90deg,var(--gold),var(--ochre),var(--forest));opacity:0.4;pointer-events:none}
-.step-card{text-align:center;padding:2rem 1.5rem;background:var(--warm-white);border-radius:16px;border:1px solid var(--border);position:relative}
-.step-num{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.5rem;font-weight:700;margin:0 auto 1.25rem;position:relative;z-index:1}
-.step-num.n1{background:rgba(201,162,64,0.12);border:2px solid var(--gold);color:var(--gold)}
-.step-num.n2{background:rgba(155,68,32,0.1);border:2px solid var(--ochre);color:var(--ochre)}
-.step-num.n3{background:rgba(45,90,39,0.1);border:2px solid var(--forest);color:var(--forest)}
-.step-title{font-family:var(--serif);font-size:1.2rem;font-weight:600;color:var(--dark);margin-bottom:0.75rem}
-.step-body{font-size:0.92rem;color:var(--brown);line-height:1.65}
-.step-note{display:inline-block;margin-top:0.85rem;font-size:0.8rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:20px}
-.sn-gold{background:rgba(201,162,64,0.12);color:var(--ochre)}
-.sn-ochre{background:rgba(155,68,32,0.08);color:var(--ochre)}
-.sn-forest{background:rgba(45,90,39,0.1);color:var(--forest)}
-@media(max-width:768px){.steps-grid{grid-template-columns:1fr;gap:1.25rem}.steps-grid::before{display:none}}
+/* SHARED */
+section { padding: 5rem 2rem; }
+.inner { max-width: var(--max); margin: 0 auto; }
+.sec-label { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+h2 { font-family: 'Lora', serif; font-size: clamp(26px,4vw,36px); font-weight: 400; line-height: 1.25; color: var(--text); margin-bottom: 0.75rem; }
+h3 { font-family: 'Lora', serif; font-size: 18px; font-weight: 400; color: var(--text); margin-bottom: 0.5rem; }
+p { color: var(--muted); line-height: 1.75; }
 
 /* VISION */
-.vision-section{background:var(--dark);position:relative;overflow:hidden}
+#vision { background: var(--cream); border-bottom: 1px solid var(--border); }
 
-.vision-section .section-title{color:var(--warm-white)}
-.vision-section .section-body{color:rgba(250,240,224,0.55)}
-.vision-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
-.vision-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.75rem;border-top:3px solid var(--gold);transition:background 0.25s;position:relative;overflow:hidden}
-.vision-card:hover{background:rgba(255,255,255,0.07)}
-.vision-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent);opacity:0.3}
-.vc-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
-.vc-icon svg{width:22px;height:22px;fill:none;stroke-width:1.8}
-.vc-title{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--gold);margin-bottom:0.6rem}
-.vc-body{font-size:0.9rem;color:rgba(255,255,255,0.5);line-height:1.65}
-@media(max-width:768px){.vision-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:500px){.vision-grid{grid-template-columns:1fr}}
+/* Ecosystem map */
+.eco-map { background: var(--forest); border-radius: 16px; padding: 3rem 2rem; margin: 2.5rem 0; text-align: center; }
+.eco-map-label { font-family: 'Lora', serif; font-size: 13px; font-style: italic; color: rgba(255,255,255,0.5); margin-bottom: 2rem; }
+.eco-center { width: 110px; height: 110px; border-radius: 50%; background: var(--gold); display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 2rem; }
+.eco-center-word { font-family: 'Lora', serif; font-size: 24px; font-style: italic; color: #fff; }
+.eco-center-sub { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.75); margin-top: 2px; }
+.eco-spokes { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+.eco-spoke { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); padding: 1.25rem 1rem; position: relative; overflow: hidden; text-align: left; }
+.eco-spoke::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+.s-kai::before    { background: #1D9E75; }
+.s-whare::before  { background: var(--gold); }
+.s-mahi::before   { background: #378ADD; }
+.s-whanau::before { background: #9B7FD4; }
+.s-whaka::before  { background: #C0392B; }
+.s-ako::before    { background: #2d8a4e; }
+.eco-icon { font-size: 22px; margin-bottom: 0.5rem; }
+.eco-t { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 0.15rem; }
+.eco-m { font-family: 'Lora', serif; font-size: 11px; font-style: italic; color: rgba(255,255,255,0.55); margin-bottom: 0.4rem; }
+.eco-d { font-size: 12px; color: rgba(255,255,255,0.7); line-height: 1.5; }
 
-/* GRANT MODEL — FOR FUNDERS */
-.funders-section{background:var(--sand)}
-.funders-inner{max-width:1100px;margin:0 auto}
-.funders-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-.funders-left{}
-.multiplier-strip{background:var(--dark);border-radius:14px;padding:2rem;margin-top:2rem}
-.m-title{font-family:var(--serif);font-size:1.05rem;color:var(--gold);margin-bottom:1rem;font-weight:600}
-.m-row{display:flex;align-items:flex-start;gap:0.9rem;margin-bottom:0.9rem;padding-bottom:0.9rem;border-bottom:1px solid rgba(255,255,255,0.06)}
-.m-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
-.m-arrow{color:var(--gold);font-size:1.1rem;margin-top:2px;flex-shrink:0}
-.m-text{font-size:0.9rem;color:rgba(255,255,255,0.6);line-height:1.55}
-.funders-right{}
-.impact-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.impact-card{background:var(--warm-white);border-radius:12px;padding:1.5rem;border:1px solid var(--border);text-align:center}
-.impact-num{font-family:var(--serif);font-size:2.2rem;font-weight:700;color:var(--forest);line-height:1;margin-bottom:0.3rem}
-.impact-label{font-size:0.82rem;color:var(--brown);line-height:1.4}
-.funder-callout{background:var(--forest);border-radius:14px;padding:2rem;margin-top:1.5rem;text-align:center}
-.funder-callout p{font-family:var(--serif);font-size:1.2rem;color:var(--warm-white);font-style:italic;line-height:1.5}
-.funder-callout strong{color:var(--gold);font-style:normal}
-@media(max-width:768px){.funders-grid{grid-template-columns:1fr;gap:2.5rem}.impact-cards{grid-template-columns:1fr 1fr}}
+/* PILLAR IMAGES — full width cinematic strips */
+.pillar-strip { width: 100%; overflow: hidden; position: relative; }
+.pillar-strip img { width: 100%; display: block; object-fit: cover; max-height: 520px; }
+.pillar-strip .caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(27,61,42,0.92) 0%, transparent 100%);
+  padding: 3rem 2rem 2rem;
+  display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+}
+.caption-text .cap-label { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-lt); margin-bottom: 0.4rem; }
+.caption-text .cap-heading { font-family: 'Lora', serif; font-size: clamp(20px,3vw,28px); color: #fff; font-weight: 400; line-height: 1.25; }
+.caption-text .cap-sub { font-size: 14px; color: rgba(255,255,255,0.72); margin-top: 0.4rem; max-width: 420px; line-height: 1.6; }
 
-/* PROBLEM */
-.problem-section{background:var(--dark)}
-.problem-section .section-title{color:var(--warm-white)}
-.problem-section .section-body{color:rgba(250,240,224,0.55)}
-.prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
-.prob-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.75rem;border-top:3px solid var(--ochre);transition:background 0.25s}
-.prob-card:hover{background:rgba(255,255,255,0.07)}
-.prob-icon{width:44px;height:44px;background:rgba(155,68,32,0.15);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
-.prob-icon svg{width:20px;height:20px;stroke:var(--ochre-light);fill:none;stroke-width:2}
-.prob-title{font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--gold);margin-bottom:0.5rem}
-.prob-body{font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.65}
-@media(max-width:768px){.prob-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:500px){.prob-grid{grid-template-columns:1fr}}
+/* TIMELINE */
+#timeline { background: var(--cream-dk); border-bottom: 1px solid var(--border); }
+.tl-track { padding-left: 2rem; border-left: 2px solid var(--gold); margin-top: 2.5rem; }
+.tl-item { position: relative; margin-bottom: 0; }
+.tl-item + .tl-item { margin-top: 0; }
+.tl-dot { position: absolute; left: -2.6rem; top: 5px; width: 14px; height: 14px; border-radius: 50%; background: var(--gold); border: 3px solid var(--cream-dk); }
+.tl-era { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.3rem; }
+.tl-heading { font-family: 'Lora', serif; font-size: 20px; color: var(--text); margin-bottom: 0.6rem; }
+.tl-body { font-size: 15px; color: var(--muted); line-height: 1.75; max-width: 540px; }
+.tl-img { margin: 1.5rem 0 2.75rem; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); max-height: 360px; }
+.tl-img img { width: 100%; object-fit: cover; max-height: 360px; display: block; }
+.tl-item:last-child .tl-img { margin-bottom: 0; }
 
-/* FEATURES */
-.features-section{background:var(--warm-white)}
-.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.feat-card{background:var(--cream);border:1px solid var(--border);border-radius:14px;padding:1.75rem;border-top:3px solid var(--forest);transition:all 0.25s}
-.feat-card:hover{transform:translateY(-4px);box-shadow:0 8px 32px rgba(45,90,39,0.1)}
-.feat-icon{width:48px;height:48px;background:rgba(45,90,39,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
-.feat-icon svg{width:22px;height:22px;stroke:var(--forest);fill:none;stroke-width:1.8}
-.feat-title{font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--dark);margin-bottom:0.5rem}
-.feat-body{font-size:0.9rem;color:var(--brown);line-height:1.65}
-@media(max-width:900px){.feat-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:500px){.feat-grid{grid-template-columns:1fr}}
+/* WHAT IHO DOES */
+#what-iho-does { background: var(--cream); border-bottom: 1px solid var(--border); }
+.does-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+.does-card { background: #fff; border-radius: var(--radius); border: 1px solid var(--border); padding: 1.5rem; border-top: 3px solid var(--forest); }
+.does-icon { font-size: 26px; margin-bottom: 0.75rem; }
+.does-title { font-size: 15px; font-weight: 600; color: var(--forest); margin-bottom: 0.4rem; }
+.does-body { font-size: 14px; color: var(--muted); line-height: 1.65; }
+.extends-note { margin-top: 2rem; padding: 1.75rem; background: var(--forest); border-radius: var(--radius); display: flex; gap: 1.25rem; align-items: flex-start; }
+.extends-note .logo-xs { height: 40px; width: 40px; object-fit: contain; flex-shrink: 0; }
+.extends-note p { color: rgba(255,255,255,0.82); font-size: 15px; line-height: 1.7; }
+.extends-note strong { color: #fff; }
 
-/* INTELLIGENCE */
-.intel-section{background:var(--sand)}
-.intel-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-top:0.5rem}
-.intel-card{background:var(--warm-white);border:1px solid var(--border);border-radius:14px;padding:1.5rem;text-align:center;transition:all 0.25s}
-.intel-card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(107,68,35,0.1);background:var(--cream)}
-.intel-icon{width:52px;height:52px;background:rgba(155,68,32,0.08);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem}
-.intel-icon svg{width:24px;height:24px;stroke:var(--ochre);fill:none;stroke-width:1.8}
-.intel-title{font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--dark);margin-bottom:0.4rem}
-.intel-body{font-size:0.82rem;color:var(--brown);line-height:1.5}
-.proof-strip{background:var(--forest);border-radius:14px;padding:1.75rem 2rem;margin-top:2rem;display:flex;align-items:center;gap:1.5rem}
-.proof-icon{width:48px;height:48px;background:rgba(255,255,255,0.12);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.proof-icon svg{width:22px;height:22px;stroke:var(--gold);fill:none;stroke-width:2}
-.proof-strip p{font-size:0.97rem;color:rgba(255,255,255,0.88);line-height:1.55}
-.proof-strip strong{color:var(--gold)}
-@media(max-width:900px){.intel-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:500px){.intel-grid{grid-template-columns:1fr 1fr}}
+/* HOW IT WORKS */
+#how { background: var(--cream-dk); border-bottom: 1px solid var(--border); }
+.how-steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 2rem; }
+.how-step { background: #fff; border-radius: var(--radius); border: 1px solid var(--border); padding: 2rem 1.5rem; }
+.step-num { font-family: 'Lora', serif; font-size: 44px; font-weight: 400; color: var(--gold); line-height: 1; margin-bottom: 1rem; }
+.step-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 0.5rem; }
+.step-body { font-size: 14px; color: var(--muted); line-height: 1.65; }
+.step-badge { display: inline-block; margin-top: 1rem; background: var(--cream-dk); color: var(--forest); font-size: 12px; font-weight: 600; padding: 4px 14px; border-radius: 100px; }
+
+/* STORIES BANNER */
+#stories { overflow: hidden; }
+#stories img { width: 100%; display: block; max-height: 500px; object-fit: cover; object-position: center 30%; }
 
 /* FOUNDER */
-.founder-section{background:var(--dark);position:relative;overflow:hidden}
+#founder { background: var(--cream); border-bottom: 1px solid var(--border); padding: 0; overflow: hidden; }
+.founder-banner { width: 100%; display: block; }
+.founder-words { max-width: var(--max); margin: 0 auto; padding: 3.5rem 2rem; display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: start; }
+.founder-logo img { height: 70px; width: 70px; object-fit: contain; }
+blockquote { font-family: 'Lora', serif; font-size: clamp(17px,2.5vw,21px); font-style: italic; line-height: 1.65; color: var(--text); margin-bottom: 1.25rem; }
+.founder-attr { font-size: 14px; color: var(--muted); line-height: 1.6; }
+.founder-attr strong { color: var(--forest); font-weight: 600; }
+.founder-body { font-size: 15px; color: var(--muted); line-height: 1.8; max-width: 520px; margin-top: 1.25rem; }
 
-.founder-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;position:relative;z-index:2}
-.founder-quote{font-family:var(--serif);font-size:clamp(1.45rem,2.5vw,1.85rem);color:var(--warm-white);font-style:italic;line-height:1.45;margin-bottom:1.75rem}
-.founder-quote em{color:var(--gold)}
-.founder-name{font-family:var(--serif);font-size:1.7rem;font-weight:600;color:var(--warm-white);margin-bottom:0.25rem}
-.founder-iwi{font-size:0.88rem;color:var(--gold);font-weight:600;margin-bottom:0.2rem}
-.founder-role{font-size:0.85rem;color:rgba(255,255,255,0.4);margin-bottom:1.75rem}
-.founder-story p{font-size:0.95rem;color:rgba(255,255,255,0.58);line-height:1.8;margin-bottom:1rem}
-@media(max-width:768px){.founder-grid{grid-template-columns:1fr;gap:3rem}}
-
-/* PRICING */
-.pricing-section{background:var(--cream)}
-.grant-note{background:var(--forest);border-radius:14px;padding:1.75rem 2rem;margin-bottom:3rem;display:flex;align-items:flex-start;gap:1.25rem}
-.grant-note-icon{width:44px;height:44px;background:rgba(255,255,255,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.grant-note-icon svg{width:20px;height:20px;stroke:var(--gold);fill:none;stroke-width:2}
-.grant-note-text{}
-.grant-note-title{font-family:var(--serif);font-size:1.15rem;color:var(--gold);font-weight:600;margin-bottom:0.35rem}
-.grant-note-body{font-size:0.92rem;color:rgba(255,255,255,0.78);line-height:1.6}
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.price-card{background:var(--warm-white);border:2px solid var(--border);border-radius:16px;overflow:hidden;transition:all 0.25s}
-.price-card:hover{box-shadow:0 12px 40px rgba(107,68,35,0.1);transform:translateY(-3px)}
-.price-card.featured{border-color:var(--forest)}
-.price-card.featured .price-head{background:var(--forest)}
-.price-head{padding:1.75rem 2rem;background:var(--sand);border-bottom:2px solid var(--border)}
-.price-tier{font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--brown);margin-bottom:0.4rem}
-.price-card.featured .price-tier{color:rgba(255,255,255,0.55)}
-.price-name{font-family:var(--serif);font-size:1.35rem;font-weight:600;color:var(--dark);margin-bottom:0.75rem}
-.price-card.featured .price-name{color:var(--warm-white)}
-.price-amount{font-family:var(--serif);font-size:2.5rem;font-weight:700;color:var(--forest);line-height:1}
-.price-card.featured .price-amount{color:var(--gold)}
-.price-amount span{font-family:var(--sans);font-size:0.95rem;color:var(--brown);font-weight:400}
-.price-card.featured .price-amount span{color:rgba(255,255,255,0.5)}
-.price-setup{font-size:0.8rem;color:var(--brown);margin-top:0.3rem}
-.price-card.featured .price-setup{color:rgba(255,255,255,0.5)}
-.price-body{padding:1.75rem}
-.price-features{list-style:none}
-.price-features li{padding:0.55rem 0;border-bottom:1px solid var(--border);font-size:0.9rem;color:var(--dark);display:flex;align-items:flex-start;gap:0.7rem;line-height:1.45}
-.price-features li:last-child{border-bottom:none}
-.pf-check{width:20px;height:20px;background:rgba(45,90,39,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-.pf-check svg{width:9px;height:9px;stroke:var(--forest);fill:none;stroke-width:3}
-.price-footer{padding:0 1.75rem 1.75rem}
-.price-footer .btn{display:flex;width:100%;justify-content:center}
-.addons{background:var(--sand);border-radius:12px;padding:1.25rem 1.75rem;margin-top:2rem;font-size:0.92rem;color:var(--brown);line-height:1.7;text-align:center}
-.addons strong{color:var(--dark)}
-@media(max-width:900px){.pricing-grid{grid-template-columns:1fr;max-width:440px;margin-left:auto;margin-right:auto}}
-
-/* DEMO */
-.demo-section{background:var(--dark)}
-.demo-section .section-title{color:var(--warm-white)}
-.demo-section .section-body{color:rgba(250,240,224,0.55)}
-.demo-gate{max-width:500px;margin:2.5rem auto 0;background:rgba(255,255,255,0.04);border:1px solid rgba(201,162,64,0.22);border-radius:16px;padding:2.5rem;text-align:center}
-
-.dg-title{font-family:var(--serif);font-size:1.35rem;color:var(--warm-white);margin-bottom:0.4rem}
-.dg-sub{font-size:0.9rem;color:rgba(255,255,255,0.4);margin-bottom:1.75rem;line-height:1.55}
-.pw-row{display:flex;margin-bottom:0.6rem}
-.pw-in{flex:1;padding:1rem;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);border-right:none;color:var(--warm-white);font-family:var(--sans);font-size:1rem;outline:none;border-radius:8px 0 0 8px}
-.pw-in:focus{border-color:var(--gold)}
-.pw-in::placeholder{color:rgba(255,255,255,0.25)}
-.pw-go{padding:1rem 1.5rem;background:var(--gold);color:var(--dark);border:none;font-family:var(--sans);font-size:0.95rem;font-weight:700;cursor:pointer;border-radius:0 8px 8px 0;transition:background 0.2s}
-.pw-go:hover{background:var(--gold-light)}
-.pw-err{color:#E07060;font-size:0.82rem;margin-top:0.4rem;display:none}
-.pw-hint{font-size:0.78rem;color:rgba(255,255,255,0.2);margin-top:0.5rem}
-.demo-portal{display:none;max-width:960px;margin:2.5rem auto 0;background:#1A140D;border:1px solid rgba(201,162,64,0.18);border-radius:16px;overflow:hidden}
-.portal-bar{background:#110D07;padding:1rem 1.5rem;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between}
-.portal-trust{font-family:var(--serif);font-size:1.05rem;color:var(--gold);font-weight:600}
-.portal-live{background:rgba(45,90,39,0.25);color:#7BC47B;font-size:0.7rem;font-weight:700;padding:0.25rem 0.7rem;border-radius:20px;letter-spacing:0.06em}
-.portal-layout{display:grid;grid-template-columns:185px 1fr;min-height:460px}
-.portal-side{background:#0F0A05;border-right:1px solid rgba(255,255,255,0.05)}
-.pnav{width:100%;text-align:left;padding:0.85rem 1.1rem;font-family:var(--sans);font-size:0.85rem;color:rgba(255,255,255,0.4);background:none;border:none;border-left:3px solid transparent;cursor:pointer;transition:all 0.2s;font-weight:500;display:flex;align-items:center;gap:0.6rem}
-.pnav:hover{color:rgba(255,255,255,0.7);background:rgba(255,255,255,0.03)}
-.pnav.active{color:var(--gold);border-left-color:var(--gold);background:rgba(201,162,64,0.06)}
-.pnav svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8;flex-shrink:0}
-.pcontent{padding:1.75rem;overflow-y:auto;max-height:460px}
-.psec{display:none}
-.psec.active{display:block}
-.phead{font-family:var(--serif);font-size:1.1rem;color:var(--gold);margin-bottom:1.25rem;padding-bottom:0.6rem;border-bottom:1px solid rgba(255,255,255,0.07)}
-.ptable{width:100%;border-collapse:collapse;font-size:0.83rem}
-.ptable th{text-align:left;padding:0.5rem 0.7rem;color:rgba(255,255,255,0.3);font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.07);font-weight:600}
-.ptable td{padding:0.75rem 0.7rem;color:rgba(255,255,255,0.62);border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.85rem}
-.pbadge{display:inline-block;padding:0.18rem 0.6rem;border-radius:20px;font-size:0.69rem;font-weight:700}
-.b-a{background:rgba(74,138,66,0.18);color:#7BC47B}
-.b-r{background:rgba(201,162,64,0.15);color:var(--gold)}
-.b-o{background:rgba(74,138,66,0.18);color:#7BC47B}
-.b-c{background:rgba(224,112,96,0.15);color:#E07060}
-.tree-wrap{display:flex;flex-direction:column;align-items:center}
-.tree-gen{display:flex;gap:1.25rem;justify-content:center}
-.tree-box{background:rgba(255,255,255,0.05);border:1px solid rgba(201,162,64,0.18);border-radius:7px;padding:0.55rem 0.85rem;text-align:center;min-width:112px}
-.tree-name{font-family:var(--serif);font-size:0.82rem;color:var(--gold);font-weight:600}
-.tree-dates{font-size:0.68rem;color:rgba(255,255,255,0.3);margin-top:1px}
-.tree-line{height:20px;width:1px;background:rgba(255,255,255,0.1);margin:0 auto}
-.tree-gen-lbl{font-size:0.68rem;color:rgba(255,255,255,0.28);text-align:center;margin-bottom:0.5rem;letter-spacing:0.08em;text-transform:uppercase}
-.ko-item{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:7px;padding:0.9rem;margin-bottom:0.65rem}
-.ko-who{font-size:0.78rem;color:var(--gold);font-weight:700;margin-bottom:0.15rem}
-.ko-when{font-size:0.68rem;color:rgba(255,255,255,0.28);margin-bottom:0.4rem}
-.ko-text{font-size:0.84rem;color:rgba(255,255,255,0.52);line-height:1.5}
-.doc-row{display:flex;align-items:center;gap:0.85rem;padding:0.75rem 0;border-bottom:1px solid rgba(255,255,255,0.05)}
-.doc-row:last-child{border-bottom:none}
-.doc-ico{width:30px;height:30px;background:rgba(201,162,64,0.1);border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.doc-ico svg{width:13px;height:13px;stroke:var(--gold);fill:none;stroke-width:1.5}
-.doc-name{font-size:0.84rem;color:rgba(255,255,255,0.65);flex:1}
-.doc-meta{font-size:0.7rem;color:rgba(255,255,255,0.28)}
-.meet-item{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:7px;padding:1rem;margin-bottom:0.65rem}
-.meet-date{font-size:0.72rem;color:var(--gold);font-weight:700;margin-bottom:0.25rem;letter-spacing:0.06em;text-transform:uppercase}
-.meet-title{font-family:var(--serif);font-size:0.95rem;color:var(--warm-white);margin-bottom:0.35rem}
-.meet-body{font-size:0.82rem;color:rgba(255,255,255,0.42);line-height:1.5}
-.grant-search{width:100%;padding:0.8rem 1rem;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--warm-white);font-family:var(--sans);font-size:0.9rem;border-radius:8px;outline:none;margin-bottom:1rem}
-.grant-result{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:0.9rem 1rem;margin-bottom:0.6rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
-.gr-name{font-family:var(--serif);font-size:0.95rem;color:var(--warm-white);font-weight:600;margin-bottom:0.15rem}
-.gr-detail{font-size:0.78rem;color:rgba(255,255,255,0.35)}
-@media(max-width:580px){.portal-layout{grid-template-columns:1fr}.portal-side{display:flex;overflow-x:auto;border-right:none;border-bottom:1px solid rgba(255,255,255,0.05)}.pnav{white-space:nowrap;border-left:none;border-bottom:3px solid transparent;flex-direction:column;gap:2px;font-size:0.73rem;padding:0.7rem 0.8rem}.pnav.active{border-bottom-color:var(--gold);border-left-color:transparent}}
-
-/* CONTACT */
-.contact-section{background:var(--cream)}
-.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:start}
-.contact-callout{background:var(--sand);border-radius:14px;padding:1.75rem;margin-top:2rem;border-left:4px solid var(--ochre)}
-.cc-title{font-family:var(--serif);font-size:1.1rem;color:var(--dark);font-weight:600;margin-bottom:0.4rem}
-.cc-body{font-size:0.9rem;color:var(--brown);line-height:1.7}
-.form-group{margin-bottom:1.2rem}
-.form-label{display:block;font-size:0.8rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--brown);margin-bottom:0.45rem}
-.form-input,.form-textarea{width:100%;padding:1rem 1.1rem;background:var(--warm-white);border:2px solid var(--border);color:var(--dark);font-family:var(--sans);font-size:1rem;border-radius:8px;outline:none;transition:border-color 0.2s}
-.form-input:focus,.form-textarea:focus{border-color:var(--forest)}
-.form-input::placeholder,.form-textarea::placeholder{color:rgba(107,68,35,0.3)}
-.form-textarea{resize:vertical;min-height:130px}
-.success-msg{display:none;background:rgba(45,90,39,0.1);border:1.5px solid rgba(45,90,39,0.25);color:var(--forest);padding:1rem 1.25rem;border-radius:8px;font-size:0.95rem;margin-top:1rem;font-weight:500}
-@media(max-width:768px){.contact-grid{grid-template-columns:1fr;gap:2.5rem}}
+/* REGISTER */
+#register { background: var(--cream-dk); }
+.form-wrap { max-width: 580px; margin: 0 auto; }
+.form-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+.form-intro { font-size: 16px; color: var(--muted); line-height: 1.75; margin-bottom: 2rem; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 1rem; }
+.field label { font-size: 13px; font-weight: 600; color: var(--muted); }
+.field input, .field select, .field textarea { font-size: 15px; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: 8px; background: #fff; color: var(--text); font-family: inherit; width: 100%; transition: border-color 0.2s; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--forest); }
+.field textarea { resize: vertical; min-height: 100px; }
+.form-submit { width: 100%; padding: 16px; background: var(--forest); color: #fff; border: none; border-radius: var(--radius); font-size: 16px; font-weight: 600; font-family: inherit; cursor: pointer; transition: background 0.2s; margin-top: 0.5rem; }
+.form-submit:hover { background: var(--forest-lt); }
+.form-note { font-size: 13px; color: var(--soft); text-align: center; margin-top: 1rem; line-height: 1.5; }
+.form-success { display: none; background: var(--forest); border-radius: var(--radius); padding: 3rem 2rem; text-align: center; }
+.form-success .tick { font-size: 44px; color: var(--gold-lt); margin-bottom: 1rem; }
+.form-success h3 { font-family: 'Lora', serif; font-size: 24px; color: #fff; font-weight: 400; margin-bottom: 0.75rem; }
+.form-success p { color: rgba(255,255,255,0.75); font-size: 15px; line-height: 1.75; }
+.form-success a { color: var(--gold-lt); font-weight: 600; }
 
 /* FOOTER */
-footer{background:var(--dark);padding:4rem 1.5rem 2rem}
-.footer-inner{max-width:1100px;margin:0 auto}
-.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
-.footer-logo{font-family:var(--serif);font-size:2.2rem;font-weight:700;color:var(--gold)}
-.footer-tagline{font-size:0.87rem;color:rgba(255,255,255,0.38);margin:0.25rem 0 1rem;font-style:italic}
-.footer-contact{font-size:0.87rem;color:rgba(255,255,255,0.45);line-height:1.8}
-.footer-contact a{color:var(--gold-light);text-decoration:none}
-.fcol-title{font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:1rem}
-.footer-links{list-style:none}
-.footer-links li{margin-bottom:0.55rem}
-.footer-links a{font-size:0.87rem;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s}
-.footer-links a:hover{color:var(--gold)}
-.footer-bottom{border-top:1px solid rgba(255,255,255,0.06);padding-top:1.75rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-.footer-copy{font-size:0.78rem;color:rgba(255,255,255,0.2)}
-@media(max-width:768px){.footer-top{grid-template-columns:1fr}.footer-bottom{flex-direction:column;text-align:center}}
+footer { background: var(--text); color: rgba(255,255,255,0.65); padding: 4rem 2rem 2rem; }
+.footer-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.footer-brand img { height: 64px; width: 64px; object-fit: contain; margin-bottom: 1rem; }
+.footer-brand p { font-family: 'Lora', serif; font-style: italic; font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+.footer-col h4 { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; }
+.footer-col a { display: block; font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 0.6rem; transition: color 0.2s; }
+.footer-col a:hover { color: #fff; }
+.footer-bottom { max-width: var(--max); margin: 1.5rem auto 0; font-size: 12px; color: rgba(255,255,255,0.3); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
 
-.back-top{position:fixed;bottom:2rem;right:2rem;background:var(--gold);color:var(--dark);width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;box-shadow:0 4px 16px rgba(0,0,0,0.2);transition:all 0.25s;opacity:0;pointer-events:none;z-index:50}
-.back-top.visible{opacity:1;pointer-events:all}
-.back-top:hover{background:var(--gold-light);transform:translateY(-3px)}
-.back-top svg{width:20px;height:20px;stroke:var(--dark);fill:none;stroke-width:2.5}
+/* MOBILE */
+@media (max-width: 680px) {
+  nav { padding: 0 1rem; }
+  .nav-links { display: none; }
+  .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--cream); border-bottom: 1px solid var(--border); padding: 1.25rem 1.5rem; gap: 1.25rem; align-items: flex-start; }
+  .nav-toggle { display: block; }
+  #hero { min-height: 100svh; }
+  .hero-overlay { background: linear-gradient(to bottom, rgba(27,61,42,0.9) 60%, rgba(27,61,42,0.6)); }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .eco-spokes { grid-template-columns: 1fr 1fr; }
+  .pillar-strip .caption { padding: 2rem 1rem 1.25rem; flex-direction: column; }
+  .does-grid { grid-template-columns: 1fr; }
+  .how-steps { grid-template-columns: 1fr; }
+  .founder-words { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  section { padding: 3.5rem 1rem; }
+  #stats { padding: 2.5rem 1rem; }
+  .tl-img { margin-bottom: 2rem; }
+}
 </style>
 </head>
 <body>
 
-<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
-  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
-</button>
-
 <!-- NAV -->
 <nav>
-  <div class="nav-inner">
-    <a href="#" class="nav-logo">IHO</a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#how-it-works">How it works</a></li>
-      <li><a href="#features">What's inside</a></li>
-      <li><a href="#for-funders">For grant funders</a></li>
-      <li><a href="#demo">See the demo</a></li>
-      <li><a href="#contact" class="nav-cta">Get in touch</a></li>
-    </ul>
-    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-  </div>
+  <div class="nav-logo"><img src="iho-logo.png" alt="Iho" /></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#vision">The vision</a></li>
+    <li><a href="#what-iho-does">What we do</a></li>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#founder">Our story</a></li>
+    <li><a href="#register" class="nav-cta">Register interest</a></li>
+  </ul>
+  <button class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Open menu">☰</button>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="top">
-  <div class="hero-texture"></div>
+<!-- HERO — papakāinga by the water -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
   <div class="hero-inner">
-    <div>
-      <div class="hero-tag">Digital Whare for Whanau Trusts</div>
-      <h1 class="hero-title">Your whanau trust<br>deserves to <span>thrive.</span></h1>
-      <div class="hero-bar"></div>
-      <p class="hero-sub">Iho is a private digital governance platform for Maori whanau trusts across Aotearoa. We give your trust the tools to find your land, access what you are owed, connect your whanau and build for the generations ahead.</p>
-      <p class="hero-sub"><strong>And we help you find the funding to pay for it.</strong></p>
-      <div class="hero-btns">
-        <a href="#how-it-works" class="btn btn-gold">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-          See how it works
-        </a>
-        <a href="#demo" class="btn btn-outline">View the demo</a>
-      </div>
-    </div>
-    <div class="hero-trust-card">
-      <p class="htc-label">What Iho makes possible</p>
-      <div class="htc-item"><div class="htc-num">1</div><p class="htc-text">We help your trust find and apply for a grant to cover the cost of your digital whare</p></div>
-      <div class="htc-item"><div class="htc-num">2</div><p class="htc-text">We build your private, customised portal — whakapapa, land, documents, governance, all in one place</p></div>
-      <div class="htc-item"><div class="htc-num">3</div><p class="htc-text">Your portal helps you find more grants, your land interests, unclaimed dividends and the support your trust has always needed</p></div>
-      <div class="htc-item"><div class="htc-num">4</div><p class="htc-text">Your whanau finally has the tools to access, understand and build on what your tupuna left you</p></div>
+    <div class="hero-logo"><img src="iho-logo.png" alt="Iho" /></div>
+    <div class="hero-label">He aha a Iho</div>
+    <h1>Reconnecting whānau<br>to their <em>iho.</em></h1>
+    <p class="lead">Your land. Your whakapapa. Your people. Your future. Iho builds the digital wharē that brings it all together — and helps your whānau trust create a truly self-sustaining ecosystem on your own whenua.</p>
+    <p class="hero-tagline">Our people. Our future. Stronger together, for generations.</p>
+    <div class="hero-btns">
+      <a href="#register" class="btn-gold">Register your interest</a>
+      <a href="#vision" class="btn-outline">See the vision</a>
     </div>
   </div>
 </section>
 
-<!-- STATS -->
-<div class="taniko"></div>
-<div class="stats-bar">
-  <div class="stats-inner">
-    <div class="stat"><div class="stat-num">5,400+</div><div class="stat-label">Maori land trusts in Aotearoa</div></div>
-    <div class="stat"><div class="stat-num">0%</div><div class="stat-label">of whanau trusts currently have a digital whare</div></div>
-    <div class="stat"><div class="stat-num">$97</div><div class="stat-label">Starting price per month — fundable through grants</div></div>
+<!-- MEANING -->
+<div id="meaning">
+  <div class="inner" style="text-align:center;">
+    <img src="iho-logo.png" alt="Iho" style="height:60px;width:60px;object-fit:contain;margin:0 auto 1.75rem;" />
+    <p class="reo">Iho — core. Essence. The umbilical cord that connects us to where we come from.</p>
+    <p class="trans">When your whānau knows their iho — their roots, their land, their history — they can build anything from it. Everything we do comes back to this.</p>
+    <div class="meaning-pills">
+      <span class="pill">Core</span>
+      <span class="pill">Essence</span>
+      <span class="pill">Connection</span>
+      <span class="pill">Origin</span>
+      <span class="pill">Umbilical cord</span>
+    </div>
   </div>
 </div>
-<div class="taniko f"></div>
 
-<!-- HOW IT WORKS -->
-<section class="how-section" id="how-it-works">
-  <div class="section-inner">
-    <span class="eyebrow ey-forest reveal">How it works</span>
-    <h2 class="section-title reveal">You do not need to find the money first.</h2>
-    <p class="section-body reveal">Most whanau trusts cannot afford to invest in digital tools from their own pocket. Iho solves that. We guide your trust through finding and applying for a grant that pays for your digital whare. Then your whare helps you access everything else.</p>
-    <div class="steps-grid">
-      <div class="step-card reveal">
-        <div class="step-num n1">1</div>
-        <div class="step-title">We find your grant</div>
-        <div class="step-body">We work with your trust to identify and apply for a grant that covers your Iho setup fee and first year of subscription. Your trust pays nothing upfront. Funding sources include Te Puni Kokiri, Poutama Trust and others.</div>
-        <span class="step-note sn-gold">Grant funded</span>
-      </div>
-      <div class="step-card reveal">
-        <div class="step-num n2">2</div>
-        <div class="step-title">We build your whare</div>
-        <div class="step-body">Once funded, we build your trust's private digital whare — completely customised for your whanau. Your whakapapa, your land holdings, your documents and your history in one secure place.</div>
-        <span class="step-note sn-ochre">Customised for you</span>
-      </div>
-      <div class="step-card reveal">
-        <div class="step-num n3">3</div>
-        <div class="step-title">Your whare opens doors</div>
-        <div class="step-body">Your portal includes intelligent tools that help your trust find more grants, locate land interests, access unclaimed dividends, manage succession and build economic opportunities on your whenua.</div>
-        <span class="step-note sn-forest">Ongoing support</span>
-      </div>
-    </div>
+<!-- STATS -->
+<div id="stats">
+  <div style="text-align:center;padding:2rem 2rem 0;"><img src="iho-logo.png" alt="Iho" style="height:36px;width:36px;object-fit:contain;margin:0 auto;opacity:0.5;" /></div>
+  <div class="stats-grid">
+    <div><div class="stat-num">5,400+</div><div class="stat-label">Māori land trusts<br>across Aotearoa</div></div>
+    <div><div class="stat-num">0%</div><div class="stat-label">Currently have a<br>digital wharē</div></div>
+    <div><div class="stat-num">$0</div><div class="stat-label">Upfront cost to<br>your trust</div></div>
+    <div><div class="stat-num">100%</div><div class="stat-label">Māori founded<br>and led</div></div>
   </div>
-</section>
-
-<!-- WAVE -->
-<div class="wave" style="background:var(--cream)"><svg viewBox="0 0 1440 48" preserveAspectRatio="none" style="height:48px"><path d="M0,48 C360,0 1080,0 1440,48 L1440,48 L0,48 Z" fill="#2C2417"/></svg></div>
+</div>
 
 <!-- VISION -->
-<section class="vision-section" id="vision">
-  <div class="section-inner">
-    <span class="eyebrow ey-white reveal">The bigger picture</span>
-    <h2 class="section-title reveal">Everything your whanau has always wanted. Finally within reach.</h2>
-    <p class="section-body reveal">Iho is not just a governance tool. It is the bridge between your whanau and everything your tupuna left you — the land, the rights, the history and the future.</p>
-    <div class="vision-grid">
-      <div class="vision-card reveal">
-        <div class="vc-icon" style="background:rgba(201,162,64,0.12)"><svg viewBox="0 0 24 24" style="stroke:var(--gold)"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-        <div class="vc-title">Find your land</div>
-        <div class="vc-body">Discover all the land your whanau has an interest in. Understand what you own, where it is and what it is worth — clearly laid out in your portal dashboard.</div>
+<section id="vision">
+  <div class="inner">
+    <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;">
+      <img src="iho-logo.png" alt="Iho" style="height:32px;width:32px;object-fit:contain;opacity:0.7;" />
+      <div class="sec-label" style="margin-bottom:0;">Te Taiao Motuhake</div>
+    </div>
+    <h2>A self-sustaining whānau ecosystem<br>built on your own whenua.</h2>
+    <p style="max-width:580px;margin-top:1rem;">Te Taiao Motuhake — a living ecosystem rooted in mana motuhake (self-determination) and kaitiakitanga (guardianship). Not handed down from outside. Built by your whānau, from the inside out. We are proving this model on our own land first — the ITTS Whānau Trust, Atififi. Once proven, it belongs to every trust in Aotearoa.</p>
+
+    <div class="eco-map">
+      <p class="eco-map-label">Ko ahau te taiao, ko te taiao, ko ahau — the ecosystem and I are one.</p>
+      <div class="eco-center">
+        <img src="iho-logo.png" alt="Iho" style="height:70px;width:70px;object-fit:contain;" />
       </div>
-      <div class="vision-card reveal">
-        <div class="vc-icon" style="background:rgba(74,138,66,0.12)"><svg viewBox="0 0 24 24" style="stroke:var(--forest-light)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <div class="vc-title">Access what you are owed</div>
-        <div class="vc-body">Find unclaimed dividends, succession rights and benefits that have been sitting unclaimed for years. Our research tools surface what most trusts never knew existed.</div>
-      </div>
-      <div class="vision-card reveal">
-        <div class="vc-icon" style="background:rgba(196,105,58,0.12)"><svg viewBox="0 0 24 24" style="stroke:var(--ochre-light)"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
-        <div class="vc-title">Unlock grant funding</div>
-        <div class="vc-body">Our built-in grants finder identifies every funding source your trust is eligible for. Then we help you write the application and submit it. Money your trust never knew it could access.</div>
-      </div>
-      <div class="vision-card reveal">
-        <div class="vc-icon" style="background:rgba(201,162,64,0.12)"><svg viewBox="0 0 24 24" style="stroke:var(--gold)"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-        <div class="vc-title">Build economic opportunity</div>
-        <div class="vc-body">Your whenua has value. Iho helps your trust understand its economic potential and connect with the support, resources and partnerships needed to build on it.</div>
-      </div>
-      <div class="vision-card reveal">
-        <div class="vc-icon" style="background:rgba(74,138,66,0.12)"><svg viewBox="0 0 24 24" style="stroke:var(--forest-light)"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
-        <div class="vc-title">Reconnect your whanau</div>
-        <div class="vc-body">Beneficiaries scattered across Aotearoa and the world can stay connected through your portal. News, decisions and history shared in one private, trusted space.</div>
-      </div>
-      <div class="vision-card reveal">
-        <div class="vc-icon" style="background:rgba(196,105,58,0.12)"><svg viewBox="0 0 24 24" style="stroke:var(--ochre-light)"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
-        <div class="vc-title">Preserve your history</div>
-        <div class="vc-body">Your whakapapa, your stories, your photographs and your land history kept safe for every generation ahead. What your kaumatua carry in their memory — preserved forever.</div>
+      <div class="eco-spokes">
+        <div class="eco-spoke s-kai"><div class="eco-icon">🌱</div><div class="eco-t">Kai</div><div class="eco-m">Mahinga kai</div><div class="eco-d">Māra kai, kaimoana, food grown on the whenua that sustains whānau and earns income</div></div>
+        <div class="eco-spoke s-whare"><div class="eco-icon">🏡</div><div class="eco-t">Whare</div><div class="eco-m">Papakāinga</div><div class="eco-d">Whānau living on their own whenua — rooted in the land their tūpuna left them</div></div>
+        <div class="eco-spoke s-mahi"><div class="eco-icon">🌊</div><div class="eco-t">Mahi</div><div class="eco-m">Mana motuhake</div><div class="eco-d">Eco-tours, food truck, markets — whānau earn within their own rohe</div></div>
+        <div class="eco-spoke s-whanau"><div class="eco-icon">🤝</div><div class="eco-t">Whanaungatanga</div><div class="eco-m">Connection</div><div class="eco-d">Whānau near and far, connected to each other and every opportunity</div></div>
+        <div class="eco-spoke s-whaka"><div class="eco-icon">📜</div><div class="eco-t">Whakapapa</div><div class="eco-m">History and identity</div><div class="eco-d">Land records, stories and history preserved digitally for every generation</div></div>
+        <div class="eco-spoke s-ako"><div class="eco-icon">📖</div><div class="eco-t">Ako</div><div class="eco-m">Education and knowledge</div><div class="eco-d">Skills, te reo, tikanga, grants and opportunities surfaced for your whānau</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WAVE -->
-<div class="wave" style="background:var(--dark)"><svg viewBox="0 0 1440 48" preserveAspectRatio="none" style="height:48px"><path d="M0,0 C360,48 1080,48 1440,0 L1440,48 L0,48 Z" fill="var(--sand)"/></svg></div>
+<!-- PILLAR IMAGE 1 — Māra kai with maunga and ocean -->
+<div class="pillar-strip">
+  <img src="img-marakai.png" alt="Māra kai — food garden with maunga and ocean, Aotearoa New Zealand" />
+  <div class="caption">
+    <div class="caption-text">
+      <div class="cap-label">Mahinga kai</div>
+      <div class="cap-heading">Food from the whenua and the sea.</div>
+      <div class="cap-sub">Māra kai, chickens, kaimoana — abundance grown on your own land, feeding your whānau and creating income.</div>
+    </div>
+    <img src="iho-logo.png" alt="Iho" style="height:48px;width:48px;object-fit:contain;opacity:0.85;flex-shrink:0;" />
+  </div>
+</div>
 
-<!-- FOR FUNDERS -->
-<section style="background:var(--sand);padding:5rem 1.5rem" id="for-funders">
-  <div class="funders-inner">
-    <div class="funders-grid">
-      <div class="funders-left">
-        <span class="eyebrow ey-forest reveal">For grant funders</span>
-        <h2 class="section-title reveal">One investment. Multiplied across Aotearoa.</h2>
-        <p class="section-body reveal" style="color:var(--brown);margin-bottom:1.5rem">When you invest in Iho, you are not funding one business. You are seeding a multiplier that activates whanau trusts across the country — each one then using Iho to unlock their own grants, their own opportunities and their own futures.</p>
-        <div class="multiplier-strip reveal">
-          <p class="m-title">How one grant to Iho creates a ripple effect</p>
-          <div class="m-row"><span class="m-arrow">→</span><p class="m-text">Iho receives seed grant funding and builds the platform</p></div>
-          <div class="m-row"><span class="m-arrow">→</span><p class="m-text">Each whanau trust joins Iho with a grant Iho helped them secure</p></div>
-          <div class="m-row"><span class="m-arrow">→</span><p class="m-text">Each trust uses Iho's grants finder to access more funding for trust activities</p></div>
-          <div class="m-row"><span class="m-arrow">→</span><p class="m-text">Each trust becomes financially capable, well-governed and self-directed</p></div>
-          <div class="m-row"><span class="m-arrow">→</span><p class="m-text">Hundreds of trusts. Thousands of whanau. One investment at the start.</p></div>
-        </div>
+<!-- PILLAR IMAGE 2 — Kaimoana harvest -->
+<div class="pillar-strip">
+  <img src="img-kaimoana.png" alt="Kaimoana harvest — returning to the ancestral way of gathering from the sea" />
+  <div class="caption">
+    <div class="caption-text">
+      <div class="cap-label">Hono i mua — returning to the ancestral way</div>
+      <div class="cap-heading">Your tūpuna thrived this way.</div>
+      <div class="cap-sub">They harvested from the sea, grew from the land, and shared everything with their people. That knowledge is still alive in us.</div>
+    </div>
+    <img src="iho-logo.png" alt="Iho" style="height:48px;width:48px;object-fit:contain;opacity:0.85;flex-shrink:0;" />
+  </div>
+</div>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="inner">
+    <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;">
+      <img src="iho-logo.png" alt="Iho" style="height:32px;width:32px;object-fit:contain;opacity:0.7;" />
+      <div class="sec-label" style="margin-bottom:0;">Hono i mua, hono i muri</div>
+    </div>
+    <h2>Connecting the past, the present<br>and the future.</h2>
+    <p style="max-width:520px;margin-top:0.75rem;">We are not inventing something new. We are returning to something true — with modern tools in our hands.</p>
+
+    <div class="tl-track">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-era">Mua — the past</div>
+        <div class="tl-heading">Your tūpuna knew how</div>
+        <p class="tl-body">They grew kai, harvested kaimoana, lived on the whenua and passed knowledge through doing. The land and the people were one and the same. That knowledge is still alive in us.</p>
+        <div class="tl-img"><img src="img-kaimoana.png" alt="Tūpuna harvesting kaimoana from the sea" /></div>
       </div>
-      <div class="funders-right">
-        <div class="impact-cards reveal">
-          <div class="impact-card"><div class="impact-num">5,400+</div><div class="impact-label">Total Maori land trusts in Aotearoa</div></div>
-          <div class="impact-card"><div class="impact-num">108</div><div class="impact-label">Iho 2% market target within 3 years</div></div>
-          <div class="impact-card"><div class="impact-num">$0</div><div class="impact-label">Upfront cost to each whanau trust</div></div>
-          <div class="impact-card"><div class="impact-num">100%</div><div class="impact-label">Maori-founded, Maori-led, built for Maori</div></div>
-        </div>
-        <div class="funder-callout reveal">
-          <p>"We are a <strong>grant-funded business</strong> that teaches grant-seeking to others. Every dollar you invest in Iho multiplies across the whanau trusts we serve."</p>
-        </div>
-        <div style="text-align:center;margin-top:1.5rem">
-          <a href="#contact" class="btn btn-forest reveal">Request a funder briefing</a>
-        </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-era">Āianei — the present</div>
+        <div class="tl-heading">The whenua is still yours</div>
+        <p class="tl-body">The land is there. The kaimoana is there. The maunga is standing. What has been missing is the structure, the connection and the tools to bring it all back to life. That is what Iho provides.</p>
+        <div class="tl-img"><img src="img-marakai.png" alt="Māra kai thriving on the whenua today" /></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-era">Āmuri ake — the future</div>
+        <div class="tl-heading">Your mokopuna inherit something whole</div>
+        <p class="tl-body">A living ecosystem. A complete digital record of every land block, every story, every decision. Employment, kai, connection and identity — built now, for them.</p>
+        <div class="tl-img"><img src="img-korero.png" alt="Kaumātua sharing whakapapa and stories with tamariki" /></div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="taniko"></div>
-
-<!-- PROBLEM -->
-<section class="problem-section" id="challenges">
-  <div class="section-inner">
-    <span class="eyebrow ey-white reveal">The challenges</span>
-    <h2 class="section-title reveal" style="color:var(--warm-white)">Every whanau trust faces the same walls.</h2>
-    <p class="section-body reveal">5,400 trusts. Most still running on paper, phone calls and memory. Iho was built because we lived these problems from the inside of our own ITTS Whanau Trust.</p>
-    <div class="prob-grid">
-      <div class="prob-card reveal">
-        <div class="prob-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
-        <div class="prob-title">No transparency</div>
-        <div class="prob-body">Whanau have no visibility of what the trust owns, what decisions are made, or what money comes in. Trust breaks down.</div>
-      </div>
-      <div class="prob-card reveal">
-        <div class="prob-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-        <div class="prob-title">Whanau disconnected</div>
-        <div class="prob-body">Important news travels by word of mouth or not at all. Beneficiaries living away feel cut off from their own trust.</div>
-      </div>
-      <div class="prob-card reveal">
-        <div class="prob-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-        <div class="prob-title">Hidden money</div>
-        <div class="prob-body">Unclaimed dividends sitting with agencies for years. Grants available that nobody applies for. Money the trust never knows it has.</div>
-      </div>
-      <div class="prob-card reveal">
-        <div class="prob-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
-        <div class="prob-title">Knowledge that disappears</div>
-        <div class="prob-body">The trust's history lives in one kaumatua's memory. When they pass, decades of knowledge and whakapapa goes with them.</div>
-      </div>
-      <div class="prob-card reveal">
-        <div class="prob-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-        <div class="prob-title">No proper records</div>
-        <div class="prob-body">Land documents, court orders and meeting minutes scattered across shoeboxes, inboxes and old computers with no backup.</div>
-      </div>
-      <div class="prob-card reveal">
-        <div class="prob-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
-        <div class="prob-title">Land left unused</div>
-        <div class="prob-body">Whanau trusts hold valuable whenua but lack the tools to understand it, manage it or build economic opportunity from it.</div>
+<!-- WHAT IHO DOES -->
+<section id="what-iho-does">
+  <div class="inner">
+    <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;">
+      <img src="iho-logo.png" alt="Iho" style="height:32px;width:32px;object-fit:contain;opacity:0.7;" />
+      <div class="sec-label" style="margin-bottom:0;">He aha tā Iho</div>
+    </div>
+    <h2>Your digital wharē is the iho<br>of your whole ecosystem.</h2>
+    <p style="max-width:540px;margin-top:0.75rem;">A thriving whenua ecosystem needs a digital layer — somewhere everything is visible, connected and accessible to every whānau member, wherever they are in the world.</p>
+    <div class="does-grid">
+      <div class="does-card"><div class="does-icon">🗺️</div><div class="does-title">Find your land</div><p class="does-body">All your trust's land blocks, shares and succession clearly laid out. Know exactly what your whānau owns and where it is.</p></div>
+      <div class="does-card"><div class="does-icon">💰</div><div class="does-title">Access what you are owed</div><p class="does-body">Unclaimed dividends, succession rights and benefits sitting untouched for years. Our tools surface what most trusts never knew existed.</p></div>
+      <div class="does-card"><div class="does-icon">📋</div><div class="does-title">Unlock grant funding</div><p class="does-body">Our grants finder identifies every source your trust is eligible for — Te Puni Kōkiri, Poutama Trust, MWDI and more. Then we help you apply.</p></div>
+      <div class="does-card"><div class="does-icon">🔗</div><div class="does-title">Reconnect your whānau</div><p class="does-body">Beneficiaries anywhere in the world stay connected through your portal. News, decisions and history shared in one private, trusted space.</p></div>
+      <div class="does-card"><div class="does-icon">📚</div><div class="does-title">Preserve your history</div><p class="does-body">Your whakapapa, stories, photographs and land history kept safe for every generation ahead. What your kaumātua carry in memory — preserved forever.</p></div>
+      <div class="does-card"><div class="does-icon">🌐</div><div class="does-title">Get every whānau online</div><p class="does-body">Resources like Skinny Jump surfaced so no whānau member is left offline. Five dollars, 35GB, no contract.</p></div>
+    </div>
+    <div class="extends-note">
+      <img class="logo-xs" src="iho-logo.png" alt="Iho" />
+      <div>
+        <strong style="display:block;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:0.6rem;">This model extends further</strong>
+        <p>Everything built for a whānau trust can be applied to a marae, a hapū or an iwi. The digital wharē grows with your community — the foundations are the same, the application is yours to shape.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WAVE -->
-<div class="wave" style="background:var(--dark)"><svg viewBox="0 0 1440 48" preserveAspectRatio="none" style="height:48px"><path d="M0,0 C360,48 1080,48 1440,0 L1440,48 L0,48 Z" fill="var(--warm-white)"/></svg></div>
-
-<!-- FEATURES -->
-<section class="features-section" id="features">
-  <div class="section-inner">
-    <span class="eyebrow ey-forest reveal">What's inside your whare</span>
-    <h2 class="section-title reveal">Everything your trust needs in one place.</h2>
-    <p class="section-body reveal">Every Iho portal is completely private and isolated. Only your trustees and approved whanau can access it. Designed to be simple for all ages — from kaumatua to rangatahi.</p>
-    <div class="feat-grid">
-      <div class="feat-card reveal">
-        <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
-        <div class="feat-title">Whakapapa Records</div>
-        <div class="feat-body">Your family history preserved and accessible for every generation. Never lost, never forgotten. Safe for your tamariki and their tamariki.</div>
-      </div>
-      <div class="feat-card reveal">
-        <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-        <div class="feat-title">Land Holdings Dashboard</div>
-        <div class="feat-body">A clear view of all your trust's land blocks, ownership shares and succession status. Know exactly what your whanau owns and where it is.</div>
-      </div>
-      <div class="feat-card reveal">
-        <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg></div>
-        <div class="feat-title">Document Vault</div>
-        <div class="feat-body">Trust orders, land titles, court documents and historical papers stored safely online. Find anything in seconds — never hunt through paper files again.</div>
-      </div>
-      <div class="feat-card reveal">
-        <div class="feat-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-        <div class="feat-title">Governance Hub</div>
-        <div class="feat-body">Meeting minutes, trustee resolutions and annual reports in one searchable record. A complete transparent history of how your trust has been run.</div>
-      </div>
-      <div class="feat-card reveal">
-        <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-        <div class="feat-title">Korero and Whakaaro</div>
-        <div class="feat-body">A private space for trustees and whanau to share news, announcements and ideas. Everyone stays connected no matter where in the world they live.</div>
-      </div>
-      <div class="feat-card reveal">
-        <div class="feat-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/></svg></div>
-        <div class="feat-title">Photos and Taonga</div>
-        <div class="feat-body">A gallery to preserve whanau photographs, cultural taonga and memories across time. Your story held safely for the generations still to come.</div>
-      </div>
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="inner">
+    <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;">
+      <img src="iho-logo.png" alt="Iho" style="height:32px;width:32px;object-fit:contain;opacity:0.7;" />
+      <div class="sec-label" style="margin-bottom:0;">How it works</div>
+    </div>
+    <h2>You do not need to find<br>the money first.</h2>
+    <p style="max-width:520px;margin-top:0.75rem;">Most whānau trusts cannot invest in digital tools from their own pocket. Iho solves that. We guide your trust through finding and applying for the grant that pays for everything.</p>
+    <div class="how-steps">
+      <div class="how-step"><div class="step-num">01</div><div class="step-title">We find your grant</div><p class="step-body">We identify and apply for funding that covers your Iho setup and first year. Your trust pays nothing upfront.</p><span class="step-badge">Grant funded</span></div>
+      <div class="how-step"><div class="step-num">02</div><div class="step-title">We build your wharē</div><p class="step-body">Once funded, we build your private digital wharē — customised with your whakapapa, land, documents and history.</p><span class="step-badge">Built for you</span></div>
+      <div class="how-step"><div class="step-num">03</div><div class="step-title">Your wharē opens doors</div><p class="step-body">Your portal finds more grants, surfaces land interests, manages succession and builds economic opportunity on your whenua.</p><span class="step-badge">Ongoing support</span></div>
     </div>
   </div>
 </section>
 
-<div class="taniko f"></div>
-
-<!-- INTELLIGENCE -->
-<section class="intel-section">
-  <div class="section-inner">
-    <span class="eyebrow ey-ochre reveal">The research tools</span>
-    <h2 class="section-title reveal">Research that took years now takes hours.</h2>
-    <p class="section-body reveal">Built inside every Iho portal are intelligent tools calibrated to the real complexity of whanau trust governance. These tools were proven on our own ITTS Whanau Trust — what had stalled for decades was completed in days.</p>
-    <div class="intel-grid">
-      <div class="intel-card reveal">
-        <div class="intel-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
-        <div class="intel-title">Grants Finder</div>
-        <div class="intel-body">Finds all available funding your specific trust is eligible for</div>
-      </div>
-      <div class="intel-card reveal">
-        <div class="intel-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
-        <div class="intel-title">Lands Finder</div>
-        <div class="intel-body">Identifies your land blocks, shares and any unclaimed interests</div>
-      </div>
-      <div class="intel-card reveal">
-        <div class="intel-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
-        <div class="intel-title">Succession Advisor</div>
-        <div class="intel-body">Guides you through succession and flags what needs action</div>
-      </div>
-      <div class="intel-card reveal">
-        <div class="intel-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-        <div class="intel-title">Document Drafter</div>
-        <div class="intel-body">Produces court submissions and trustee reports ready to send</div>
-      </div>
-      <div class="intel-card reveal">
-        <div class="intel-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div>
-        <div class="intel-title">Research Tool</div>
-        <div class="intel-body">Searches court records and whakapapa connections in minutes</div>
-      </div>
-    </div>
-    <div class="proof-strip reveal">
-      <div class="proof-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-      <p>Proven on the <strong>ITTS Whanau Trust.</strong> Research that had stalled for decades was completed in days. Not a promise — a result already achieved.</p>
-    </div>
+<!-- STORIES BANNER — kaumātua with tamariki -->
+<div id="stories" style="position:relative;overflow:hidden;">
+  <img src="img-korero.png" alt="Kaumātua sharing whakapapa and stories with tamariki outside the wharenui" style="width:100%;display:block;max-height:500px;object-fit:cover;object-position:center 30%;" />
+  <div style="position:absolute;top:1.5rem;right:1.5rem;">
+    <img src="iho-logo.png" alt="Iho" style="height:52px;width:52px;object-fit:contain;opacity:0.9;" />
   </div>
-</section>
-
-<div class="taniko"></div>
+  <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(27,61,42,0.85) 0%,transparent 100%);padding:3rem 2rem 1.75rem;">
+    <p style="font-family:'Lora',serif;font-style:italic;font-size:clamp(16px,2.5vw,22px);color:#fff;max-width:560px;line-height:1.55;margin:0;">Every whānau has stories worth protecting. Iho keeps them safe — for the generations still to come.</p>
+  </div>
+</div>
 
 <!-- FOUNDER -->
-<section class="founder-section" style="padding:5rem 1.5rem">
-  <div class="founder-grid">
-    <div class="reveal">
-      <blockquote class="founder-quote">"I am a trustee who lived this from the inside out. I watched our trust struggle for years. So I built the solution for our own whanau trust first. <em>Now I want every trust in Aotearoa to have what we built.</em>"</blockquote>
-      <p style="font-size:0.78rem;color:rgba(255,255,255,0.28);letter-spacing:0.08em;text-transform:uppercase">Donna Smith, Founder of Iho</p>
-    </div>
-    <div class="reveal">
-      <h3 class="founder-name">Donna Smith</h3>
-      <p class="founder-iwi">Ngai Te Rangi — Smith and Tukaki Whanau</p>
-      <p class="founder-role">Incoming Trustee, ITTS Whanau Trust &nbsp;|&nbsp; Ngai Te Rangi Tribal Register</p>
-      <div class="founder-story">
-        <p>For years I watched our whanau trust struggle with no accessible records, no way to keep whanau informed and no guidance on what support was available. Important knowledge lived in our kaumatua's memory alone.</p>
-        <p>So I built a digital whare for our own ITTS Whanau Trust. What previous trustees had spent years trying to resolve — succession matters, unclaimed dividends, land research — was completed in days using Iho's tools.</p>
-        <p>Iho is now available to every whanau trust in Aotearoa. Built by a trustee, for trustees. And built to help your whanau access everything your tupuna always intended for you.</p>
-      </div>
+<section id="founder">
+  <img class="founder-banner" src="donna-banner.png" alt="Kia ora whānau, I am Donna, founder of Iho" />
+  <div class="founder-words">
+    <div class="founder-logo"><img src="iho-logo.png" alt="Iho" /></div>
+    <div>
+      <div class="sec-label">Our story</div>
+      <blockquote>"I am building this for our own whānau and whenua first — the ITTS Whānau Trust. Because the only honest way to bring something to your people is to prove it works at home. That is what Iho is — built from the inside out, with aroha."</blockquote>
+      <p class="founder-attr"><strong>Donna Smith</strong><br>Founder, Iho. Trustee, ITTS Whānau Trust.<br>Ngāi Te Rangi, Tauwhao hapū. Aotearoa New Zealand.</p>
+      <p class="founder-body">Iho was created from my personal journey of reconnecting with my whānau, my whenua, my whakapapa, my culture and my people. I know the challenges. I understand the responsibility. And I believe there is a better way. I watched our trust struggle for years with no accessible records, no way to keep whānau informed and no guidance on what support was available. So I built a digital wharē for our own trust first. Now I want every trust in Aotearoa to have what we built.</p>
     </div>
   </div>
 </section>
 
-<!-- WAVE -->
-<div class="wave" style="background:var(--dark)"><svg viewBox="0 0 1440 48" preserveAspectRatio="none" style="height:48px"><path d="M0,0 C360,48 1080,48 1440,0 L1440,48 L0,48 Z" fill="var(--cream)"/></svg></div>
-
-<!-- PRICING -->
-<section class="pricing-section" id="pricing">
-  <div class="section-inner">
-    <span class="eyebrow ey-forest reveal">Pricing</span>
-    <h2 class="section-title reveal">Simple, honest pricing — fundable through grants.</h2>
-    <p class="section-body reveal">Every Iho portal has a one-off setup investment and a simple monthly subscription. We help your trust find a grant to cover these costs. Your trust pays nothing until funding is confirmed.</p>
-    <div class="grant-note reveal">
-      <div class="grant-note-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
-      <div class="grant-note-text">
-        <div class="grant-note-title">Your trust does not need to find this money upfront</div>
-        <div class="grant-note-body">We work with you to identify and apply for grant funding that covers your Iho setup and subscription. Funding sources include Te Puni Kokiri, Poutama Trust, MWDI and others. We guide the process — you just need to be ready to build your whare.</div>
-      </div>
-    </div>
-    <div class="pricing-grid">
-      <div class="price-card reveal">
-        <div class="price-head">
-          <p class="price-tier">Entry</p>
-          <p class="price-name">Starter Whare</p>
-          <p class="price-amount">$97<span>/month</span></p>
-          <p class="price-setup">One-off setup $2,500 NZD</p>
-        </div>
-        <div class="price-body">
-          <ul class="price-features">
-            <li><span class="pf-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Your complete private portal</li>
-            <li><span class="pf-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Whakapapa and land holdings</li>
-            <li><span class="pf-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Document vault and governance hub</li>
-            <li><span class="pf-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Korero section and photo gallery</li>
-            <li><span class="pf-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Secure trustee access</li>
-          </ul>
-        </div>
-        <div class="price-footer"><a href="#contact" class="btn" style="background:var(--sand);color:var(--dark);border:2px solid var(--border)">Get started</a></div>
-      </div>
-      <div class="price-card featured reveal">
-        <div class="price-head">
-          <p class="price-tier">Growth</p>
-          <p class="price-name">Whare Ora</p>
-          <p class="price-amount">$197<span>/month</span></p>
-          <p class="price-setup">One-off setup $2,500 NZD</p>
-        </div>
-        <div class="price-body">
-          <ul class="price-features">
-            <li><span class="pf-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Everything in Starter Whare</li>
-            <li><span class="pf-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>All intelligent research tools</li>
-            <li><span class="pf-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Grants finder and lands finder</li>
-            <li><span class="pf-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Succession advisor</li>
-            <li><span class="pf-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Document drafter</li>
-          </ul>
-        </div>
-        <div class="price-footer"><a href="#contact" class="btn btn-gold">Get started</a></div>
-      </div>
-      <div class="price-card reveal">
-        <div class="price-head">
-          <p class="price-tier">Pro</p>
-          <p class="price-name">Whare Rangatira</p>
-          <p class="price-amount">$397<span>/month</span></p>
-          <p class="price-setup">One-off setup $2,500 NZD</p>
-        </div>
-        <div class="price-body">
-          <ul class="price-features">
-            <li><span class="pf-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Everything in Whare Ora</li>
-            <li><span class="pf-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Grant writing service included</li>
-            <li><span class="pf-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Priority support</li>
-            <li><span class="pf-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Custom tools for your trust</li>
-            <li><span class="pf-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Quarterly trustee reporting</li>
-          </ul>
-        </div>
-        <div class="price-footer"><a href="#contact" class="btn" style="background:var(--sand);color:var(--dark);border:2px solid var(--border)">Get started</a></div>
-      </div>
-    </div>
-    <p class="addons reveal"><strong>Additional services:</strong> Grant writing from $500 &nbsp;|&nbsp; Trustee training from $297 per person &nbsp;|&nbsp; On-site setup from $1,500 per day</p>
-  </div>
-</section>
-
-<!-- DEMO -->
-<section class="demo-section" id="demo">
-  <div class="section-inner">
-    <span class="eyebrow reveal" style="background:rgba(201,162,64,0.15);color:var(--gold-light)">Live demo</span>
-    <h2 class="section-title reveal" style="color:var(--warm-white)">See Iho for yourself.</h2>
-    <p class="section-body reveal">This is a real working demonstration of the Iho platform — the same portal is live on the ITTS Whanau Trust today. Enter the password below to explore Te Whanau Mahoe Trust.</p>
-    <div class="demo-gate reveal" id="demoGate">
-      <p class="dg-title">Explore Te Whanau Mahoe Trust</p>
-      <p class="dg-sub">Enter the password to access the demonstration portal</p>
-      <div class="pw-row"><input type="password" class="pw-in" id="pwIn" placeholder="Enter password" autocomplete="off"><button class="pw-go" onclick="checkPw()">Enter</button></div>
-      <div class="pw-err" id="pwErr">That password is not correct. Please try again.</div>
-      <p class="pw-hint">Password available on request — contact donna@iho.co.nz</p>
-    </div>
-    <div class="demo-portal" id="demoPortal">
-      <div class="portal-bar"><span class="portal-trust">Te Whanau Mahoe Trust</span><span class="portal-live">Demo portal</span></div>
-      <div class="portal-layout">
-        <div class="portal-side">
-          <button class="pnav active" onclick="showTab('whakapapa',this)"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Whakapapa</button>
-          <button class="pnav" onclick="showTab('land',this)"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Land Holdings</button>
-          <button class="pnav" onclick="showTab('docs',this)"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>Documents</button>
-          <button class="pnav" onclick="showTab('gov',this)"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Governance</button>
-          <button class="pnav" onclick="showTab('korero',this)"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Korero</button>
-          <button class="pnav" onclick="showTab('grants',this)"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>Grants Finder</button>
-        </div>
-        <div class="pcontent">
-          <div class="psec active" id="tab-whakapapa">
-            <p class="phead">Whakapapa — Te Whanau Mahoe</p>
-            <div class="tree-wrap">
-              <p class="tree-gen-lbl">Tupuna</p>
-              <div class="tree-gen"><div class="tree-box"><div class="tree-name">Tama Mahoe</div><div class="tree-dates">1821 — 1889</div></div><div class="tree-box"><div class="tree-name">Hine Mahoe</div><div class="tree-dates">1825 — 1901</div></div></div>
-              <div class="tree-line"></div>
-              <p class="tree-gen-lbl" style="margin-top:4px">Matua</p>
-              <div class="tree-gen"><div class="tree-box"><div class="tree-name">Reweti Mahoe</div><div class="tree-dates">1858 — 1934</div></div><div class="tree-box"><div class="tree-name">Arihia Mahoe</div><div class="tree-dates">1861 — 1940</div></div><div class="tree-box"><div class="tree-name">Pita Mahoe</div><div class="tree-dates">1865 — 1922</div></div></div>
-              <div class="tree-line"></div>
-              <p class="tree-gen-lbl" style="margin-top:4px">Whanau inaianei</p>
-              <div class="tree-gen"><div class="tree-box"><div class="tree-name">Koha Mahoe</div><div class="tree-dates">b. 1952</div></div><div class="tree-box"><div class="tree-name">Mere Mahoe</div><div class="tree-dates">b. 1958</div></div><div class="tree-box"><div class="tree-name">Tuhoe Mahoe</div><div class="tree-dates">b. 1961</div></div></div>
-            </div>
-          </div>
-          <div class="psec" id="tab-land">
-            <p class="phead">Land Holdings</p>
-            <table class="ptable"><thead><tr><th>Block name</th><th>Area</th><th>Shares</th><th>Status</th></tr></thead>
-            <tbody>
-              <tr><td>Mahoe Block A</td><td>45.6 ha</td><td>2,340</td><td><span class="pbadge b-a">Active</span></td></tr>
-              <tr><td>Waipuna Reserve</td><td>12.3 ha</td><td>890</td><td><span class="pbadge b-r">Under review</span></td></tr>
-              <tr><td>Te Awa Section</td><td>8.7 ha</td><td>456</td><td><span class="pbadge b-a">Active</span></td></tr>
-            </tbody></table>
-          </div>
-          <div class="psec" id="tab-docs">
-            <p class="phead">Document Vault</p>
-            <div class="doc-row"><div class="doc-ico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg></div><div><div class="doc-name">Trust Order 2019</div><div class="doc-meta">March 2024 &nbsp;|&nbsp; Trust document</div></div></div>
-            <div class="doc-row"><div class="doc-ico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg></div><div><div class="doc-name">Annual Report 2023</div><div class="doc-meta">January 2024 &nbsp;|&nbsp; Financial</div></div></div>
-            p;&nbsp; Legal</div></div></div>
-            <div class="doc-row"><div class="doc-ico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg></div><div><div class="doc-name">Maori Land Court Correspondence 2024</div><div class="doc-meta">April 2024 &nbsp;|&nbsp; Correspondence</div></div></div>
-            <div class="doc-row"><div class="doc-ico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg></div><div><div class="doc-name">Land Title — Waipuna Reserve</div><div class="doc-meta">June 2021 &nbsp;|&nbsp; Title document</div></div></div>
-          </div>
-          <div class="psec" id="tab-gov">
-            <p class="phead">Governance Records</p>
-            <div class="meet-item"><div class="meet-date">March 15, 2024</div><div class="meet-title">Quarterly trustees meeting — Waipuna Reserve</div><div class="meet-body">Resolution passed to commission an independent survey of Waipuna Reserve ahead of succession application. All three trustees present. Next meeting June 2024.</div></div>
-            <div class="meet-item"><div class="meet-date">November 8, 2023</div><div class="meet-title">Annual general meeting — 2023 financial review</div><div class="meet-body">Annual accounts accepted. Dividend distribution of $4,200 approved across 23 eligible beneficiaries. Unclaimed dividends in Mahoe Block A referred for investigation.</div></div>
-          </div>
-          <div class="psec" id="tab-korero">
-            <p class="phead">Korero — Whanau Updates</p>
-            <div class="ko-item"><div class="ko-who">Koha Mahoe (Trustee)</div><div class="ko-when">April 22, 2024</div><div class="ko-text">Kia ora whanau. The succession research for Mahoe Block A is going well. We expect the full report ready for June. If anyone has documents about the original title holders please get in touch.</div></div>
-            <div class="ko-item"><div class="ko-who">Mere Mahoe (Trustee)</div><div class="ko-when">February 14, 2024</div><div class="ko-text">Our trust portal is now live. All trustees have access to the document vault and land dashboard. This has been a long time coming for our whanau. He mihi nui ki a tatou katoa.</div></div>
-          </div>
-          <div class="psec" id="tab-grants">
-            <p class="phead">Grants Finder</p>
-            <input class="grant-search" type="text" placeholder="Search available funding..." oninput="filterGrants(this.value)">
-            <div id="grantsList">
-              <div class="grant-result"><div><div class="gr-name">Poutama Trust — Maori Business Funding</div><div class="gr-detail">$5,000 to $50,000 &nbsp;|&nbsp; Open year-round</div></div><span class="pbadge b-o">Open</span></div>
-              <div class="grant-result"><div><div class="gr-name">Te Puni Kokiri — Maori Development Fund</div><div class="gr-detail">$10,000 to $100,000 &nbsp;|&nbsp; Via regional office</div></div><span class="pbadge b-o">Open</span></div>
-              <div class="grant-result"><div><div class="gr-name">MWDI — Maori Women's Development Inc</div><div class="gr-detail">$10,000 to $50,000 &nbsp;|&nbsp; Low-interest loan</div></div><span class="pbadge b-c">Closing soon</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="wave" style="background:var(--dark)"><svg viewBox="0 0 1440 48" preserveAspectRatio="none" style="height:48px"><path d="M0,0 C360,48 1080,48 1440,0 L1440,48 L0,48 Z" fill="var(--cream)"/></svg></div>
-
-<section class="contact-section" id="contact">
-  <div class="section-inner">
-    <div class="contact-grid">
+<!-- REGISTER -->
+<section id="register">
+  <div class="form-wrap">
+    <div class="form-header">
+      <img src="iho-logo.png" alt="Iho" style="height:52px;width:52px;object-fit:contain;" />
       <div>
-        <span class="eyebrow ey-ochre reveal">Get in touch</span>
-        <h2 class="section-title reveal">Korero mai.</h2>
-        <p class="section-body reveal" style="margin-bottom:0">Whether you are a whanau trustee wanting to learn more, a beneficiary asking how Iho can help your trust, or a grant funder wanting a briefing — we would love to hear from you.</p>
-        <div class="contact-callout reveal">
-          <p class="cc-title">Donna Smith — Founder, Iho</p>
-          <p class="cc-body">donna@iho.co.nz<br>iho.co.nz<br>Aotearoa New Zealand<br><br>We respond to all enquiries within one working day.</p>
-        </div>
+        <div class="sec-label" style="margin-bottom:0.25rem;">Expression of interest</div>
+        <h2 style="font-size:clamp(22px,3vw,30px);">Register your whānau trust or marae.</h2>
       </div>
-      <div class="reveal">
-        <div class="form-group"><label class="form-label">Your name</label><input class="form-input" type="text" id="cName" placeholder="Your full name"></div>
-        <div class="form-group"><label class="form-label">Email address</label><input class="form-input" type="email" id="cEmail" placeholder="Your email address"></div>
-        <div class="form-group"><label class="form-label">Name of your whanau trust (optional)</label><input class="form-input" type="text" id="cTrust" placeholder="Leave blank if not sure"></div>
-        <div class="form-group"><label class="form-label">I am enquiring as a (optional)</label>
-          <select class="form-input" id="cRole" style="appearance:none;cursor:pointer">
-            <option value="">Please select</option>
-            <option>Whanau trustee</option>
-            <option>Whanau beneficiary</option>
-            <option>Grant funder</option>
+    </div>
+    <p class="form-intro">We are piloting on our own whenua first and building our waitlist. Register now and be first in line when we are ready for yours. Every registration also shows funders that real demand exists across Aotearoa.</p>
+    <div id="eoi-form">
+      <div class="form-grid">
+        <div class="field"><label for="f-name">Your name</label><input type="text" id="f-name" placeholder="Full name" /></div>
+        <div class="field"><label for="f-email">Email address</label><input type="email" id="f-email" placeholder="your@email.com" /></div>
+      </div>
+      <div class="form-grid">
+        <div class="field"><label for="f-trust">Trust or marae name</label><input type="text" id="f-trust" placeholder="Name of your trust or marae" /></div>
+        <div class="field"><label for="f-region">Region</label>
+          <select id="f-region">
+            <option value="">Select your region</option>
+            <option>Tauwhao / Bay of Plenty</option>
+            <option>Ngāi Te Rangi / Tauranga Moana</option>
+            <option>Waikato-Maniapoto</option>
+            <option>Waiariki</option>
+            <option>Auckland / Tāmaki Makaurau</option>
+            <option>Northland / Te Tai Tokerau</option>
+            <option>Wellington / Te Whanganui-a-Tara</option>
+            <option>Canterbury / Te Waipounamu</option>
             <option>Other</option>
           </select>
         </div>
-        <div class="form-group"><label class="form-label">Your message</label><textarea class="form-textarea" id="cMsg" placeholder="Tell us about your trust and what you are looking for. We will get back to you soon."></textarea></div>
-        <button class="btn btn-gold" onclick="submitForm()" style="width:100%;justify-content:center">Send your message</button>
-        <div class="success-msg" id="successMsg">Tino pai. Your message has been received. We will be in touch within one working day.</div>
       </div>
+      <div class="field"><label for="f-role">Your connection</label>
+        <select id="f-role">
+          <option value="">Select your role</option>
+          <option>Trustee</option>
+          <option>Beneficiary</option>
+          <option>Marae committee member</option>
+          <option>Hapū or iwi representative</option>
+          <option>Whānau member</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field"><label for="f-note">Anything you would like us to know (optional)</label><textarea id="f-note" placeholder="Tell us about your trust or marae, or what you are hoping Iho can help with..."></textarea></div>
+      <button class="form-submit" onclick="submitEOI()">Register our interest</button>
+      <p class="form-note">No commitment required. Your trust pays nothing to register. We will be in touch when we are ready for you.</p>
+    </div>
+    <div class="form-success" id="eoi-success">
+      <div class="tick">✓</div>
+      <h3>Tino pai. You are on the list.</h3>
+      <p>We have received your registration and will be in touch once our pilot is complete and we are ready to bring Iho to your whānau trust or marae.<br><br>Questions in the meantime? Kōrero mai — <a href="mailto:donna@iho.co.nz">donna@iho.co.nz</a></p>
     </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <div class="taniko" style="margin-bottom:3rem;opacity:0.25"></div>
-    <div class="footer-top">
-      <div>
-        <div class="footer-logo">IHO</div>
-        <div class="footer-tagline">From the core. For generations.</div>
-        <div class="footer-contact">
-          <a href="mailto:donna@iho.co.nz">donna@iho.co.nz</a><br>
-          <a href="https://iho.co.nz">iho.co.nz</a><br>
-          Aotearoa New Zealand
-        </div>
-      </div>
-      <div>
-        <p class="fcol-title">Explore</p>
-        <ul class="footer-links">
-          <li><a href="#how-it-works">How it works</a></li>
-          <li><a href="#vision">The bigger picture</a></li>
-          <li><a href="#features">What's inside</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#demo">See the demo</a></li>
-        </ul>
-      </div>
-      <div>
-        <p class="fcol-title">Connect</p>
-        <ul class="footer-links">
-          <li><a href="#contact">Get in touch</a></li>
-          <li><a href="#for-funders">For grant funders</a></li>
-          <li><a href="mailto:donna@iho.co.nz">Email Donna</a></li>
-        </ul>
-      </div>
+    <div class="footer-brand">
+      <img src="iho-logo.png" alt="Iho" />
+      <p>Built with aroha.<br>For the generations still to come.</p>
+      <p style="margin-top:0.75rem;font-style:normal;font-size:13px;color:rgba(255,255,255,0.4);">Our people. Our future.<br>Stronger together, for generations.</p>
     </div>
-    <div class="footer-bottom">
-      <p class="footer-copy">Iho — The digital whare for whanau trusts. Aotearoa New Zealand.</p>
-      <p class="footer-copy">Built with aroha. For the generations still to come.</p>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="#vision">The vision</a>
+      <a href="#timeline">Past, present, future</a>
+      <a href="#what-iho-does">What we do</a>
+      <a href="#how">How it works</a>
+      <a href="#founder">Our story</a>
     </div>
+    <div class="footer-col">
+      <h4>Kōrero mai</h4>
+      <a href="#register">Register interest</a>
+      <a href="mailto:donna@iho.co.nz">donna@iho.co.nz</a>
+      <a href="https://iho.co.nz">iho.co.nz</a>
+      <a href="https://iho.nz">iho.nz</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>Iho — Aotearoa New Zealand. Built by Donna Smith, Ngāi Te Rangi, Tauwhao hapū.</span>
+    <span>iho.co.nz &amp; iho.nz</span>
   </div>
 </footer>
 
 <script>
-document.getElementById('hamburger').addEventListener('click',function(){document.getElementById('navLinks').classList.toggle('open');});
-document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
-const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.09});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-window.addEventListener('scroll',()=>document.getElementById('backTop').classList.toggle('visible',window.scrollY>400));
-function checkPw(){
-  const v=document.getElementById('pwIn').value;
-  if(v==='mahoe2024'){document.getElementById('demoGate').style.display='none';document.getElementById('demoPortal').style.display='block';}
-  else{document.getElementById('pwErr').style.display='block';document.getElementById('pwIn').value='';document.getElementById('pwIn').focus();}
+function submitEOI() {
+  const name = document.getElementById('f-name').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const trust = document.getElementById('f-trust').value.trim();
+  if (!name || !email || !trust) {
+    alert('Please fill in your name, email and trust or marae name to register.');
+    return;
+  }
+  document.getElementById('eoi-form').style.display = 'none';
+  document.getElementById('eoi-success').style.display = 'block';
+  window.scrollTo({ top: document.getElementById('register').offsetTop - 80, behavior: 'smooth' });
 }
-document.getElementById('pwIn').addEventListener('keypress',e=>{if(e.key==='Enter')checkPw();});
-function showTab(id,el){document.querySelectorAll('.psec').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.pnav').forEach(b=>b.classList.remove('active'));document.getElementById('tab-'+id).classList.add('active');el.classList.add('active');}
-function filterGrants(v){document.querySelectorAll('.grant-result').forEach(g=>{g.style.display=!v||g.innerText.toLowerCase().includes(v.toLowerCase())?'flex':'none';});}
-function submitForm(){
-  const n=document.getElementById('cName').value;const e=document.getElementById('cEmail').value;
-  if(!n||!e){alert('Please enter your name and email address.');return;}
-  document.getElementById('successMsg').style.display='block';
-  ['cName','cEmail','cTrust','cMsg'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('successMsg').scrollIntoView({behavior:'smooth',block:'nearest'});
-}
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',function(e){const t=document.querySelector(this.getAttribute('href'));if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-72,behavior:'smooth'});}});
-});
 </script>
 </body>
 </html>
