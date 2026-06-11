@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Iho — Our People. Our Future.</title>
+<title>Iho Our People. Our Future.</title>
 <meta name="description" content="Iho builds digital wharē for Māori whānau trusts. Reconnecting whānau to their land, their whakapapa, and a self-sustaining future."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -141,6 +141,24 @@ a{color:inherit;text-decoration:none}
   display:inline-block;transition:border-color .2s,color .2s;
 }
 .btn-line:hover{border-color:var(--cream)}
+.hero-iho-meaning{
+  display:flex;align-items:baseline;gap:14px;
+  margin:1.75rem 0 1.5rem;
+  padding:1.25rem 1.5rem;
+  border-left:2px solid var(--gold);
+  background:rgba(201,146,42,0.06);
+  max-width:460px;
+}
+.iho-word{
+  font-family:'Cormorant Garamond',serif;
+  font-size:32px;font-weight:300;font-style:italic;
+  color:var(--gold-lt);flex-shrink:0;line-height:1;
+}
+.iho-def{
+  font-size:13px;line-height:1.7;
+  color:rgba(244,239,228,0.55);
+  letter-spacing:0.02em;
+}
 .hero-scroll-cue{
   position:absolute;bottom:2.5rem;right:var(--pad);z-index:2;
   display:flex;flex-direction:column;align-items:center;gap:10px;
@@ -334,6 +352,61 @@ a{color:inherit;text-decoration:none}
 .tl-img-wrap{margin-top:1.5rem;aspect-ratio:16/6;overflow:hidden;border:1px solid var(--border)}
 .tl-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 5s ease}
 .tl-img-wrap:hover img{transform:scale(1.03)}
+
+/* ── WHARE VISION BRIDGE ── */
+.wv-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:0;border:1px solid var(--border);
+}
+.wv-item{
+  padding:2.5rem 2rem;
+  border-right:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.wv-grid .wv-item:nth-child(3n){border-right:none}
+.wv-grid .wv-item:nth-child(n+4){border-bottom:none}
+.wv-connector{
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:1.25rem;
+}
+.wv-icon{font-size:20px;line-height:1}
+.wv-arrow{
+  font-size:14px;color:var(--gold);
+  font-weight:300;opacity:0.7;
+}
+.wv-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-weight:400;
+  color:var(--cream);margin-bottom:0.6rem;
+}
+.wv-body{
+  font-size:13px;line-height:1.75;
+  color:rgba(244,239,228,0.55);
+}
+.wv-summary{
+  margin-top:4rem;
+  text-align:center;
+  padding:3rem 2rem;
+  border:1px solid var(--border);
+  position:relative;
+}
+.wv-summary::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(to right,transparent,var(--gold),transparent);
+}
+.wv-summary-quote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(20px,2.5vw,28px);
+  font-weight:300;font-style:italic;
+  color:var(--cream);line-height:1.4;
+  max-width:600px;margin:0 auto;
+}
+@media(max-width:720px){
+  .wv-grid{grid-template-columns:1fr}
+  .wv-item{border-right:none}
+  .wv-item:last-child{border-bottom:none}
+}
 
 /* ── CHALLENGES ── */
 .ch-grid{
@@ -593,6 +666,7 @@ footer{
   <ul class="nav-links">
     <li><a href="#vision">Vision</a></li>
     <li><a href="#what-we-do">What we do</a></li>
+    <li><a href="#whare-vision">How it helps</a></li>
     <li><a href="#challenges">Challenges</a></li>
     <li><a href="#funders">Funders</a></li>
     <li><a href="#founder">Our story</a></li>
@@ -621,8 +695,12 @@ footer{
     <h1 class="hero-h1 r r1">
       Your whānau<br>trust deserves<br>a <em>digital wharē.</em>
     </h1>
-    <p class="hero-meaning r r2">A private digital home for your trust — connecting whānau, preserving history, unlocking what your tūpuna left you.</p>
-    <p class="hero-lead r r2">Iho builds your digital wharē and helps you find the funding to pay for it. Your land. Your whakapapa. Your people. All in one place — for the generations still to come.</p>
+    <p class="hero-meaning r r2">Iho builds your trust a private digital home. Your land. Your whakapapa. Your people. All connected in one place.</p>
+    <div class="hero-iho-meaning r r2">
+      <span class="iho-word">iho</span>
+      <span class="iho-def">Core. Essence. The umbilical cord that connects us to where we come from. That is why we named it Iho.</span>
+    </div>
+    <p class="hero-lead r r3">We build your digital wharē and help you find the funding to pay for it. No upfront cost to your trust.</p>
     <div class="btn-row r r3">
       <a href="#register" class="btn-fill">Register your interest</a>
       <a href="#what-we-do" class="btn-line">What is a digital wharē?</a>
@@ -668,7 +746,7 @@ footer{
   </div>
 </section>
 
-<!-- VISION — split text + image -->
+<!-- VISION split text + image -->
 <section class="s s-forest" id="vision">
   <div class="split">
     <div class="split-text">
@@ -676,10 +754,10 @@ footer{
       <h2 class="d-heading r r1">A self-sustaining<br>ecosystem on<br>your <em>own whenua.</em></h2>
       <div class="rule r r2"></div>
       <p class="body-text r r2">A living ecosystem rooted in mana motuhake (self-determination) and kaitiakitanga (guardianship). Not handed down from outside. Built by your whānau, from the inside out.</p>
-      <p class="body-text r r3" style="margin-top:1.25rem;">We are proving this on our own land first — with our own whānau trust. Once proven, it belongs to every trust in Aotearoa.</p>
+      <p class="body-text r r3" style="margin-top:1.25rem;">We are proving this on our own land first with our own whānau trust. Once proven, it belongs to every trust in Aotearoa.</p>
     </div>
     <div class="split-img r r2">
-      <img src="img-marakai.png" alt="Māra kai — food garden with maunga and ocean" loading="lazy"/>
+      <img src="img-marakai.png" alt="Māra kai food garden with maunga and ocean" loading="lazy"/>
       <div class="split-img-veil"></div>
     </div>
   </div>
@@ -691,9 +769,9 @@ footer{
     <div class="eyebrow r"><div class="eyebrow-rule"></div><span class="eyebrow-text">The six pillars</span></div>
     <h2 class="d-heading r r1" style="max-width:520px;">What a thriving<br>whānau ecosystem<br><em>looks like.</em></h2>
     <div class="pillars r r2">
-      <div class="pillar"><div class="pillar-bar"></div><div class="p-num">01</div><div class="p-title">Kai</div><div class="p-sub">Mahinga kai</div><div class="p-body">Māra kai, kaimoana, food grown on the whenua — sustaining whānau and generating income</div></div>
+      <div class="pillar"><div class="pillar-bar"></div><div class="p-num">01</div><div class="p-title">Kai</div><div class="p-sub">Mahinga kai</div><div class="p-body">Māra kai, kaimoana, food grown on the whenua sustaining whānau and generating income</div></div>
       <div class="pillar"><div class="pillar-bar"></div><div class="p-num">02</div><div class="p-title">Whare</div><div class="p-sub">Papakāinga</div><div class="p-body">Whānau living on their own whenua, rooted in the land their tūpuna left them</div></div>
-      <div class="pillar"><div class="pillar-bar"></div><div class="p-num">03</div><div class="p-title">Mahi</div><div class="p-sub">Mana motuhake</div><div class="p-body">Eco-tours, food truck, markets — employment and income within the rohe</div></div>
+      <div class="pillar"><div class="pillar-bar"></div><div class="p-num">03</div><div class="p-title">Mahi</div><div class="p-sub">Mana motuhake</div><div class="p-body">Eco-tours, food truck, markets employment and income within the rohe</div></div>
       <div class="pillar"><div class="pillar-bar"></div><div class="p-num">04</div><div class="p-title">Whanaungatanga</div><div class="p-sub">Connection</div><div class="p-body">Whānau near and far connected to each other, to decisions and every opportunity</div></div>
       <div class="pillar"><div class="pillar-bar"></div><div class="p-num">05</div><div class="p-title">Whakapapa</div><div class="p-sub">History and identity</div><div class="p-body">Land, stories and history preserved digitally for every generation that follows</div></div>
       <div class="pillar"><div class="pillar-bar"></div><div class="p-num">06</div><div class="p-title">Ako</div><div class="p-sub">Education and knowledge</div><div class="p-body">Skills, te reo, tikanga, grants and opportunities surfaced and shared</div></div>
@@ -701,13 +779,13 @@ footer{
   </div>
 </section>
 
-<!-- ATMOSPHERE — Kaimoana -->
+<!-- ATMOSPHERE Kaimoana -->
 <div class="atm">
   <div class="atm-img" style="background-image:url('img-kaimoana.png')" data-lazy="img-kaimoana.png"></div>
   <div class="atm-veil"></div>
   <div class="atm-content">
     <div>
-      <div class="atm-tag">Hono i mua — returning to the ancestral way</div>
+      <div class="atm-tag">Hono i mua returning to the ancestral way</div>
       <div class="atm-title">Your tūpuna<br>thrived this way.</div>
     </div>
     <div class="atm-body">They harvested from the sea, grew from the land, shared everything with their people. That knowledge is still alive in us. Iho is how we carry it forward.</div>
@@ -719,7 +797,7 @@ footer{
   <div class="wrap">
     <div class="eyebrow r"><div class="eyebrow-rule"></div><span class="eyebrow-text">Hono i mua, hono i muri</span></div>
     <h2 class="d-heading r r1">Connecting past,<br>present and <em>future.</em></h2>
-    <p class="body-text r r2" style="max-width:520px;">We are not inventing something new. We are returning to something true — with modern tools in our hands.</p>
+    <p class="body-text r r2" style="max-width:520px;">We are not inventing something new. We are returning to something true with modern tools in our hands.</p>
     <div class="tl r r3">
       <div class="tl-row">
         <div class="tl-era">Mua<small>The past</small></div>
@@ -741,7 +819,7 @@ footer{
         <div class="tl-era">Āmuri<small>The future</small></div>
         <div class="tl-content">
           <h3>Your mokopuna inherit something whole</h3>
-          <p>A living ecosystem. A complete digital record of every land block, every story, every decision. Employment, kai, connection and identity — built now, for them.</p>
+          <p>A living ecosystem. A complete digital record of every land block, every story, every decision. Employment, kai, connection and identity built now, for them.</p>
           <div class="tl-img-wrap"><img src="img-korero.png" alt="Kaumātua sharing whakapapa with tamariki" loading="lazy"/></div>
         </div>
       </div>
@@ -749,13 +827,13 @@ footer{
   </div>
 </section>
 
-<!-- ATMOSPHERE — Korero / stories -->
+<!-- ATMOSPHERE Korero / stories -->
 <div class="atm">
   <div class="atm-img" style="background-image:url('img-korero.png')" data-lazy="img-korero.png"></div>
   <div class="atm-veil" style="background:linear-gradient(to top,rgba(8,10,7,.95) 0%,rgba(8,10,7,.55) 50%,rgba(8,10,7,.1) 100%)"></div>
   <div style="position:relative;z-index:2;width:100%;max-width:var(--max);margin:0 auto;padding:5rem var(--pad);text-align:center;">
     <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,48px);font-style:italic;font-weight:300;color:#fff;line-height:1.25;max-width:640px;margin:0 auto 1rem;">Every whānau has stories<br>worth protecting.</p>
-    <p style="font-size:13px;color:rgba(255,255,255,.45);letter-spacing:.06em;">Iho keeps them safe — for the generations still to come.</p>
+    <p style="font-size:13px;color:rgba(255,255,255,.45);letter-spacing:.06em;">Iho keeps them safe for the generations still to come.</p>
   </div>
 </div>
 
@@ -764,30 +842,101 @@ footer{
   <div class="wrap">
     <div class="eyebrow r"><div class="eyebrow-rule"></div><span class="eyebrow-text">He aha te digital wharē</span></div>
     <h2 class="d-heading r r1">What is a<br><em>digital wharē?</em></h2>
-    <p class="body-text muted-text r r2" style="max-width:540px;margin-bottom:1.5rem;">A digital wharē is your whānau trust's private online home — a secure portal that brings everything together in one place, accessible to every whānau member wherever they are in the world.</p>
-    <p class="body-text muted-text r r2" style="max-width:540px;margin-bottom:3rem;">Think of it as the marae of your digital world. A place to gather, share, preserve and act — built around the specific needs of your trust and your whānau.</p>
+    <p class="body-text muted-text r r2" style="max-width:540px;margin-bottom:1.5rem;">A digital wharē is your whānau trust's private online home a secure portal that brings everything together in one place, accessible to every whānau member wherever they are in the world.</p>
+    <p class="body-text muted-text r r2" style="max-width:540px;margin-bottom:3rem;">Think of it as the marae of your digital world. A place to gather, share, preserve and act built around the specific needs of your trust and your whānau.</p>
     <div class="rule r"></div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem 4rem;" class="r r2">
       <div>
         <div class="sub-head" style="margin-top:2rem;">Find your land</div>
         <p class="body-text muted-text">All your trust's land blocks, shares and succession clearly laid out. Know exactly what your whānau owns and where it is.</p>
         <div class="sub-head" style="margin-top:2rem;">Access what you are owed</div>
-        <p class="body-text muted-text">Unclaimed dividends, succession rights and benefits sitting untouched for years — surfaced by our research tools.</p>
+        <p class="body-text muted-text">Unclaimed dividends, succession rights and benefits sitting untouched for years surfaced by our research tools.</p>
         <div class="sub-head" style="margin-top:2rem;">Unlock grant funding</div>
-        <p class="body-text muted-text">Our grants finder identifies every source your trust is eligible for — Te Puni Kōkiri, Poutama Trust, MWDI and more.</p>
+        <p class="body-text muted-text">Our grants finder identifies every source your trust is eligible for Te Puni Kōkiri, Poutama Trust, MWDI and more.</p>
       </div>
       <div>
         <div class="sub-head" style="margin-top:2rem;">Reconnect your whānau</div>
         <p class="body-text muted-text">Beneficiaries anywhere in the world stay connected through your private portal. News, decisions and history in one trusted space.</p>
         <div class="sub-head" style="margin-top:2rem;">Preserve your history</div>
-        <p class="body-text muted-text">Your whakapapa, stories, photographs and land history kept safe for every generation. What your kaumātua carry in memory — preserved forever.</p>
+        <p class="body-text muted-text">Your whakapapa, stories, photographs and land history kept safe for every generation. What your kaumātua carry in memory preserved forever.</p>
         <div class="sub-head" style="margin-top:2rem;">Get every whānau online</div>
         <p class="body-text muted-text">Resources like Skinny Jump surfaced so no whānau member is left offline. Five dollars, 35GB, no contract.</p>
       </div>
     </div>
     <div style="margin-top:3rem;padding:2rem 2.5rem;background:var(--forest);display:flex;align-items:center;gap:2rem;flex-wrap:wrap;" class="r r3">
-      <p style="font-size:15px;color:rgba(244,239,228,.8);line-height:1.75;flex:1;min-width:240px;"><strong style="color:#fff;">This model extends further.</strong> Everything built for a whānau trust applies to a marae, a hapū or an iwi. The foundations are the same — the application is yours to shape.</p>
+      <p style="font-size:15px;color:rgba(244,239,228,.8);line-height:1.75;flex:1;min-width:240px;"><strong style="color:#fff;">This model extends further.</strong> Everything built for a whānau trust applies to a marae, a hapū or an iwi. The foundations are the same the application is yours to shape.</p>
       <a href="#register" class="btn-fill" style="flex-shrink:0;">Register interest</a>
+    </div>
+  </div>
+</section>
+
+<!-- DIGITAL WHARE ENABLES THE VISION -->
+<section class="s s-forest" id="whare-vision">
+  <div class="wrap">
+    <div class="eyebrow r"><div class="eyebrow-rule"></div><span class="eyebrow-text">The connection</span></div>
+    <h2 class="d-heading r r1">How your digital wharē<br>brings the vision <em>to life.</em></h2>
+    <p class="body-text r r2" style="max-width:560px;margin-bottom:4rem;">The physical ecosystem — the māra kai, the kaimoana, the eco-tours, the papakāinga — needs a digital spine to hold it together. Your digital wharē is that spine. Without it, the vision stays a dream. With it, your whānau can actually build it.</p>
+
+    <div class="wv-grid r r2">
+      <div class="wv-item">
+        <div class="wv-connector">
+          <div class="wv-icon">🌱</div>
+          <div class="wv-arrow">→</div>
+          <div class="wv-icon">💻</div>
+        </div>
+        <div class="wv-title">Kai and income</div>
+        <p class="wv-body">Your māra kai and kaimoana operations need coordination, grant funding and visibility. Your digital wharē tracks progress, surfaces food production grants and keeps whānau informed on what is growing and what is earning.</p>
+      </div>
+      <div class="wv-item">
+        <div class="wv-connector">
+          <div class="wv-icon">🏡</div>
+          <div class="wv-arrow">→</div>
+          <div class="wv-icon">💻</div>
+        </div>
+        <div class="wv-title">Papakāinga housing</div>
+        <p class="wv-body">Building whānau housing on your whenua requires land records, succession clarity and funding applications. Your digital wharē holds all of that in one place and guides you through every step.</p>
+      </div>
+      <div class="wv-item">
+        <div class="wv-connector">
+          <div class="wv-icon">🌊</div>
+          <div class="wv-arrow">→</div>
+          <div class="wv-icon">💻</div>
+        </div>
+        <div class="wv-title">Eco-tours and mahi</div>
+        <p class="wv-body">Employment within the rohe means sharing opportunities with whānau first. Your digital wharē is the noticeboard, the skills register and the funding finder for every business venture your trust wants to build.</p>
+      </div>
+      <div class="wv-item">
+        <div class="wv-connector">
+          <div class="wv-icon">🤝</div>
+          <div class="wv-arrow">→</div>
+          <div class="wv-icon">💻</div>
+        </div>
+        <div class="wv-title">Keeping whānau connected</div>
+        <p class="wv-body">Whānau living away still have a stake in the whenua. Your digital wharē keeps them in the loop on every decision, every opportunity and every milestone so the ecosystem belongs to all of them, not just those physically present.</p>
+      </div>
+      <div class="wv-item">
+        <div class="wv-connector">
+          <div class="wv-icon">📜</div>
+          <div class="wv-arrow">→</div>
+          <div class="wv-icon">💻</div>
+        </div>
+        <div class="wv-title">Whakapapa and history</div>
+        <p class="wv-body">The vision is rooted in who you are and where you come from. Your digital wharē preserves the stories, the land history and the whakapapa that give the ecosystem its meaning and its mana.</p>
+      </div>
+      <div class="wv-item">
+        <div class="wv-connector">
+          <div class="wv-icon">📖</div>
+          <div class="wv-arrow">→</div>
+          <div class="wv-icon">💻</div>
+        </div>
+        <div class="wv-title">Skills and knowledge</div>
+        <p class="wv-body">Raranga, māra kai, kaimoana practices, tikanga, te reo. Your digital wharē is where that knowledge lives, where tamariki can find it and where the next generation inherits it with intention.</p>
+      </div>
+    </div>
+
+    <div class="wv-summary r r3">
+      <p class="wv-summary-quote">The digital wharē does not replace the physical vision. It makes the physical vision possible.</p>
+      <a href="#register" class="btn-fill" style="margin-top:2rem;display:inline-block;">Register your interest</a>
     </div>
   </div>
 </section>
@@ -809,7 +958,7 @@ footer{
   </div>
 </section>
 
-<!-- RESEARCH TOOLS — split with image -->
+<!-- RESEARCH TOOLS split with image -->
 <section class="s s-forest2" id="tools">
   <div class="split" style="min-height:480px;">
     <div class="split-img r">
@@ -818,7 +967,7 @@ footer{
     <div class="split-text">
       <div class="eyebrow r"><div class="eyebrow-rule"></div><span class="eyebrow-text">Built inside every portal</span></div>
       <h2 class="d-heading r r1">Research that took years<br>now takes <em>hours.</em></h2>
-      <p class="body-text r r2" style="margin-bottom:2rem;">Proven on our own whānau trust — what had stalled for decades was completed in days.</p>
+      <p class="body-text r r2" style="margin-bottom:2rem;">Proven on our own whānau trust what had stalled for decades was completed in days.</p>
       <div class="tools r r3">
         <div class="tool"><div class="tool-icon">🔍</div><div class="tool-name">Grants Finder</div><p class="tool-desc">All funding your trust qualifies for, found and prioritised</p></div>
         <div class="tool"><div class="tool-icon">🗺️</div><div class="tool-name">Lands Finder</div><p class="tool-desc">Your land blocks, shares and unclaimed interests surfaced</p></div>
@@ -839,7 +988,7 @@ footer{
     <p class="body-text r r2" style="max-width:500px;">Most whānau trusts cannot invest in digital tools from their own pocket. Iho solves that.</p>
     <div class="how r r3">
       <div class="how-step"><div class="how-n">01</div><div class="how-title">We find your grant</div><p class="how-body">We identify and apply for funding that covers your Iho setup and first year. Your trust pays nothing upfront.</p><span class="how-badge">Grant funded</span></div>
-      <div class="how-step"><div class="how-n">02</div><div class="how-title">We build your wharē</div><p class="how-body">Once funded, we build your private digital wharē — customised with your whakapapa, land, documents and history.</p><span class="how-badge">Built for you</span></div>
+      <div class="how-step"><div class="how-n">02</div><div class="how-title">We build your wharē</div><p class="how-body">Once funded, we build your private digital wharē customised with your whakapapa, land, documents and history.</p><span class="how-badge">Built for you</span></div>
       <div class="how-step"><div class="how-n">03</div><div class="how-title">Your wharē opens doors</div><p class="how-body">Your portal finds more grants, surfaces land interests, manages succession and builds opportunity on your whenua.</p><span class="how-badge">Ongoing support</span></div>
     </div>
   </div>
@@ -853,10 +1002,10 @@ footer{
         <div class="eyebrow"><div class="eyebrow-rule"></div><span class="eyebrow-text">For grant funders</span></div>
         <h2 class="d-heading">One investment.<br><em>Multiplied</em> across<br>Aotearoa.</h2>
         <div class="rule"></div>
-        <p class="body-text">When you invest in Iho, you are seeding a multiplier that activates whānau trusts across the country — each one unlocking their own grants, opportunities and futures.</p>
+        <p class="body-text">When you invest in Iho, you are seeding a multiplier that activates whānau trusts across the country each one unlocking their own grants, opportunities and futures.</p>
         <div style="margin-top:2.5rem;padding:2rem;border:1px solid var(--border);">
           <p style="font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;color:var(--cream);line-height:1.6;margin-bottom:1.25rem;">"We are a grant-funded business that teaches grant-seeking to others. Every dollar you invest in Iho multiplies across the whānau trusts we serve."</p>
-          <p style="font-size:12px;color:var(--gold);letter-spacing:.1em;font-weight:600;">DONNA SMITH — FOUNDER, IHO</p>
+          <p style="font-size:12px;color:var(--gold);letter-spacing:.1em;font-weight:600;">DONNA SMITH FOUNDER, IHO</p>
           <a href="mailto:donna@iho.co.nz" style="display:inline-block;margin-top:1.25rem;padding:10px 22px;border:1px solid var(--gold);color:var(--gold);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;transition:background .2s,color .2s;" onmouseover="this.style.background='var(--gold)';this.style.color='var(--ink)'" onmouseout="this.style.background='transparent';this.style.color='var(--gold)'">Request a funder briefing</a>
         </div>
       </div>
@@ -880,7 +1029,7 @@ footer{
         <img src="donna-banner.png" alt="Donna Smith, founder of Iho" loading="lazy"/>
       </div>
       <div class="founder-words">
-        <blockquote>"I am building this for our own whānau and whenua first. Because the only honest way to bring something to your people is to prove it works at home. That is what Iho is — built from the inside out, with aroha."</blockquote>
+        <blockquote>"I am building this for our own whānau and whenua first. Because the only honest way to bring something to your people is to prove it works at home. That is what Iho is. Built from the inside out, with aroha."</blockquote>
         <p class="f-attr">Donna Smith<span>Founder, Iho &nbsp;·&nbsp; Trustee, whānau trust &nbsp;·&nbsp; Ngāi Te Rangi, Tauwhao hapū</span></p>
         <p class="f-body">Iho was created from my personal journey of reconnecting with my whānau, my whenua, my whakapapa, my culture and my people. I know the challenges. I understand the responsibility. I watched our trust struggle for years with no accessible records, no way to keep whānau informed, no guidance on what support was available. So I built a digital wharē for our own trust first. Now I want every trust in Aotearoa to have what we built.</p>
       </div>
@@ -963,6 +1112,7 @@ footer{
       <h4>Explore</h4>
       <a href="#vision">The vision</a>
       <a href="#what-we-do">What we do</a>
+      <a href="#whare-vision">How it helps</a>
       <a href="#challenges">Challenges</a>
       <a href="#tools">Research tools</a>
       <a href="#funders">For funders</a>
@@ -980,7 +1130,7 @@ footer{
     </div>
   </div>
   <div class="foot-bottom">
-    <span>Iho — Aotearoa New Zealand. Built by Donna Smith, Ngāi Te Rangi, Tauwhao hapū.</span>
+    <span>Iho Aotearoa New Zealand. Built by Donna Smith, Ngāi Te Rangi, Tauwhao hapū.</span>
     <span>© 2026 Iho</span>
   </div>
 </footer>
