@@ -1384,11 +1384,17 @@ function sub(){
     alert('Please fill in your name, email and trust or marae name to register.');
     return;
   }
-  document.getElementById('eoi-form').style.display='none';
-  const ok=document.getElementById('eoi-ok');
-  ok.style.display='block';
-  ok.classList.add('in');
-  setTimeout(()=>ok.scrollIntoView({behavior:'smooth',block:'center'}),100);
+  fetch('https://formspree.io/f/maqzldnw',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({name:n,email:e,trust:t})
+  }).then(r=>{
+    document.getElementById('eoi-form').style.display='none';
+    const ok=document.getElementById('eoi-ok');
+    ok.style.display='block';
+    ok.classList.add('in');
+    setTimeout(()=>ok.scrollIntoView({behavior:'smooth',block:'center'}),100);
+  });
 }
 </script>
 </body>
