@@ -1456,27 +1456,44 @@ window.addEventListener('load',()=>{
   document.querySelectorAll('#hero .r').forEach(el=>el.classList.add('in'));
 });
 
-// Form submit
-function sub(){
+// Form submit: capture the full enquiry and report failures accurately.
+let submitting=false;
+async function sub(){
+  if(submitting)return;
   const n=document.getElementById('fn').value.trim();
   const e=document.getElementById('fe').value.trim();
   const t=document.getElementById('ft').value.trim();
-  if(!n||!e||!t){
-    alert('Please fill in your name, email and trust or marae name to register.');
+  const region=document.getElementById('fr').value;
+  const role=document.getElementById('frl').value;
+  const notes=document.getElementById('fno').value.trim();
+  const emailField=document.getElementById('fe');
+  if(!n||!e||!t||!emailField.checkValidity()){
+    alert('Please enter your name, a valid email address and your trust or marae name.');
     return;
   }
-  fetch('https://formspree.io/f/maqzldnw',{
-    method:'POST',
-    headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify({name:n,email:e,trust:t})
-  }).then(r=>{
+  const btn=document.querySelector('#eoi-form .f-btn');
+  submitting=true;
+  if(btn){btn.disabled=true;btn.textContent='Sending…';}
+  try{
+    const response=await fetch('https://formspree.io/f/maqzldnw',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({name:n,email:e,trust:t,region,role,notes})
+    });
+    if(!response.ok)throw new Error('Form submission failed');
     document.getElementById('eoi-form').style.display='none';
     const ok=document.getElementById('eoi-ok');
     ok.style.display='block';
     ok.classList.add('in');
     setTimeout(()=>ok.scrollIntoView({behavior:'smooth',block:'center'}),100);
-  });
+  }catch(error){
+    alert('Sorry, your enquiry could not be confirmed. Please try again.');
+  }finally{
+    submitting=false;
+    if(btn){btn.disabled=false;btn.textContent='Yes. I want this for my trust.';}
+  }
 }
+
 </script>
 </body>
 </html>
