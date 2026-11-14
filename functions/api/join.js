@@ -1,27 +1,54 @@
 // Cloudflare Pages Function. Deploy only with IHO_INTAKE_DB and TURNSTILE_SECRET_KEY configured.
 // This endpoint intentionally does not send mail; acknowledgement requires a separate tested mail worker.
 const json=(data,status=200)=>new Response(JSON.stringify(data),{status,headers:{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'}});
-const clean=(x,max)=>typeof x==='string'?x.trim().slice(0,max):'';
+const clean=(x,max)=>typeof x==='string'&&x.trim().length<=max?x.trim():'';
+async function readBody(request){
+  const reader=request.body?.getReader();
+  if(!reader)return {error:'Missing JSON',status:400};
+  let total=0, payload='';
+  const decoder=new TextDecoder('utf-8',{fatal:true});
+  try{
+    for(;;){
+      const {value,done}=await reader.read();
+      if(done)break;
+      total+=value.byteLength;
+      if(total>12000){
+        await reader.cancel();
+        return {error:'Payload too large',status:413};
+      }
+      payload+=decoder.decode(value,{stream:true});
+    }
+    const body=JSON.parse(payload+decoder.decode());
+    if(body&&typeof body==='object'&&!Array.isArray(body))return {body};
+  }catch{}
+  return {error:'Invalid JSON',status:400};
+}
 const uuid=()=>crypto.randomUUID();
 export async function onRequestPost({request,env}){
   if(!env.IHO_INTAKE_DB||!env.TURNSTILE_SECRET_KEY)return json({error:'Intake unavailable'},503);
   const origin=request.headers.get('Origin');
-  if(origin && !['https://iho.co.nz','https://www.iho.co.nz'].includes(origin))return json({error:'Origin not allowed'},403);
+  if(!['https://iho.co.nz','https://www.iho.co.nz'].includes(origin) || origin!==new URL(request.url).origin)return json({error:'Origin not allowed'},403);
   if((request.headers.get('content-type')||'').split(';')[0].trim()!=='application/json')return json({error:'Expected JSON'},415);
   if(Number(request.headers.get('content-length')||0)>12000)return json({error:'Payload too large'},413);
-  let body;try{body=await request.json()}catch{return json({error:'Invalid JSON'},400)}
+  const parsed=await readBody(request);
+  if(!parsed.body)return json({error:parsed.error},parsed.status);
+  const {body}=parsed;
+  for(const [field,max] of Object.entries({name:120,email:254,trust:160,region:120,role:100,message:2000,turnstile_token:2048})){
+    if(body[field]!=null&&(typeof body[field]!=='string'||body[field].trim().length>max))return json({error:'Invalid form fields'},400);
+  }
   const name=clean(body.name,120),email=clean(body.email,254).toLowerCase(),trust=clean(body.trust,160);
   const region=clean(body.region,120),role=clean(body.role,100),message=clean(body.message,2000);
   if(!name||!trust||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))return json({error:'Missing or invalid required fields'},400);
   if(typeof body.updates_opt_in!=='boolean')return json({error:'Update consent must be explicit'},400);
-  const token=clean(body.turnstile_token,4096);
+  const token=clean(body.turnstile_token,2048);
   if(!token)return json({error:'Verification required'},400);
   let verification;
   try{
     const response=await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({secret:env.TURNSTILE_SECRET_KEY,response:token,remoteip:request.headers.get('CF-Connecting-IP')||''})});
+    if(!response.ok)return json({error:'Verification temporarily unavailable'},503);
     verification=await response.json();
   }catch{return json({error:'Verification temporarily unavailable'},503)}
-  if(!verification.success||!['iho.co.nz','www.iho.co.nz'].includes(verification.hostname))return json({error:'Verification failed'},403);
+  if(!verification?.success||verification.hostname!==new URL(request.url).hostname||verification.action!=='iho_join')return json({error:'Verification failed'},403);
   const id=uuid(),eventId=uuid(),optIn=body.updates_opt_in?1:0,now=new Date().toISOString();
   try{
     await env.IHO_INTAKE_DB.batch([
@@ -40,3 +67,4 @@ export async function onRequestPost({request,env}){
   }
 }
 export async function onRequestGet(){return json({error:'Method not allowed'},405)}
+
